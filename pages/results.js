@@ -17,6 +17,15 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import axios from "axios";
 import Copyright from "./layout/copyright";
 import TextieIcon from "./layout/textie_icon";
+import {
+  TableContainer,
+  Table,
+  TableBody,
+  TableHead,
+  TableRow,
+  TableCell,
+} from "@material-ui/core";
+
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(5),
@@ -44,6 +53,18 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
   },
 }));
+
+const returnDate = (date) => {
+  var dateObj = new Date(date);
+  var fullDate = dateObj.toString();
+  var listDate = fullDate.split(" ");
+  return listDate[0] + " " + listDate[1] + " " + listDate[2];
+};
+
+const columns = [
+  { id: "textie", label: "Textie" },
+  { id: "date", label: "Date", minWidth: 100 },
+];
 
 export default function Home() {
   const classes = useStyles();
@@ -119,13 +140,43 @@ export default function Home() {
               </div>
             ) : (
               <div>
-                <ul>
+                <TableContainer>
+                  <Table stickyHeader>
+                    <TableHead>
+                      <TableRow>
+                        {columns.map((column) => (
+                          <TableCell
+                            key={column.id}
+                            align={column.align}
+                            style={{
+                              minWidth: column.minWidth,
+                              fontWeight: "bold",
+                            }}
+                          >
+                            {column.label}
+                          </TableCell>
+                        ))}
+                      </TableRow>
+                    </TableHead>
+                    {notes.map((note) => (
+                      <TableRow key={note.id}>
+                        <TableCell component="th" scope="row">
+                          {note.textie}
+                        </TableCell>
+                        <TableCell component="th" scope="row">
+                          {returnDate(note.created_date)}
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </Table>
+                </TableContainer>
+                {/* <ul>
                   {notes.map((note) => (
                     <li key={note.id}>
                       <Typography>{note.textie}</Typography>
                     </li>
                   ))}
-                </ul>
+                </ul> */}
               </div>
             )}
           </Paper>
