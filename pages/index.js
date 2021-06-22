@@ -43,6 +43,11 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
   select: { minHeight: 50, fontSize: 1.5 + "em" },
+  errorText: {
+    textAlign: "center",
+    color: "red",
+    fontWeight: "bolder",
+  },
 }));
 
 export default function Home() {
@@ -52,15 +57,15 @@ export default function Home() {
   const [auth_code, setAuth_code] = useState("");
   const [showAuth, setShowAuth] = useState(false);
   const [phone_number, setPhone_Number] = useState("");
+  const [loginErrors, setLoginErrors] = useState("");
   const handleSubmit = (e) => {
     axios
-      .post("https://texties.herokuapp.com/auth", {
-        params: { phone_number: phone_number },
-      })
+      .post("https://texties.herokuapp.com/auth?phone_number=" + phone_number)
       .then((res) => {
         console.log(res.data);
       })
       .catch((err) => {
+        setLoginErrors(err);
         console.log(err);
       });
 
@@ -69,17 +74,23 @@ export default function Home() {
 
   const handleSubmitAuth = (e) => {
     axios
-      .post("https://texties.herokuapp.com/auth", {
-        params: { phone_number: phone_number, auth_code: auth_code },
-      })
+      .post(
+        "https://texties.herokuapp.com/auth_check?phone_number=" +
+          phone_number +
+          "&auth_code=" +
+          auth_code
+      )
       .then((res) => {
         console.log(res.data);
+        if (res.data["success"] === true) {
+          router.push("/results");
+          setShowAuth(true);
+        }
       })
       .catch((err) => {
+        setLoginErrors(err.response.data["Error"]);
         console.log(err);
       });
-    router.push("/results");
-    setShowAuth(true);
   };
 
   return (
@@ -142,6 +153,13 @@ export default function Home() {
                 Send Auth Code
               </Button>
             )}
+            <Typography
+              variant="subtitle1"
+              className={classes.errorText}
+              gutterBottom
+            >
+              {loginErrors}
+            </Typography>
           </form>
         </div>
         <Box mt={8}>
