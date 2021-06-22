@@ -54,7 +54,9 @@ export default function Home() {
   const [phone_number, setPhone_Number] = useState("");
   const handleSubmit = (e) => {
     axios
-      .put("https://texties.herokuapp.com/auth" + phone_number)
+      .post("https://texties-test.herokuapp.com/auth", {
+        params: { phone_number: phone_number },
+      })
       .then((res) => {
         console.log(res.data);
       })
@@ -67,7 +69,9 @@ export default function Home() {
 
   const handleSubmitAuth = (e) => {
     axios
-      .put("https://texties.herokuapp.com/auth" + phone_number)
+      .post("https://texties-test.herokuapp.com/auth", {
+        params: { phone_number: phone_number, auth_code: auth_code },
+      })
       .then((res) => {
         console.log(res.data);
       })
