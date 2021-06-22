@@ -21,11 +21,12 @@ import TextieIcon from "./layout/textie_icon";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(10),
     padding: theme.spacing(1),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    width: 100 + "%",
   },
   avatar: {
     margin: theme.spacing(1),
@@ -34,6 +35,9 @@ const useStyles = makeStyles((theme) => ({
   form: {
     width: "100%", // Fix IE 11 issue.
     marginTop: theme.spacing(1),
+  },
+  inputText: {
+    width: 100 + "%",
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
@@ -86,6 +90,7 @@ export default function Home() {
           <form className={classes.form}>
             <TextField
               variant="outlined"
+              className={classes.inputText}
               margin="normal"
               required
               fullWidth
