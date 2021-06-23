@@ -25,6 +25,8 @@ import {
   TableRow,
   TableCell,
 } from "@material-ui/core";
+import { useContext } from "react";
+import UserContext from "../components/UserContext";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -68,14 +70,20 @@ const columns = [
 
 export default function Home() {
   const classes = useStyles();
+  const { signOut, user } = useContext(UserContext);
   const [notes, setNotes] = useState([]);
-  const [type, setType] = useState("notes");
+  const [type, setType] = useState("note");
   const [loading, setLoading] = useState(true);
   const handleChange = (e) => {
     // setType(e.target.value);
     setLoading(true);
     axios
-      .get("https://texties.herokuapp.com/get/" + type)
+      .get(
+        "https://texties-test.herokuapp.com/get?type=" +
+          type +
+          "&phone_number=" +
+          user
+      )
       .then((res) => {
         setLoading(false);
         setNotes(res.data);
@@ -85,8 +93,15 @@ export default function Home() {
       });
   };
   useEffect(() => {
+    console.log("user", user);
+    console.log("type", type);
     axios
-      .get("https://texties.herokuapp.com/get/" + type)
+      .get(
+        "https://texties-test.herokuapp.com/get?type=" +
+          type +
+          "&phone_number=" +
+          user
+      )
       .then((res) => {
         setLoading(false);
         setNotes(res.data);
@@ -120,8 +135,8 @@ export default function Home() {
               <MenuItem value="" disabled>
                 Type
               </MenuItem>
-              <MenuItem value={"notes"}>Notes</MenuItem>
-              <MenuItem value={"ideas"}>Ideas</MenuItem>
+              <MenuItem value={"note"}>Notes</MenuItem>
+              <MenuItem value={"idea"}>Ideas</MenuItem>
               <MenuItem value={"weight"}>Weight</MenuItem>
             </Select>
             <Button
@@ -180,6 +195,14 @@ export default function Home() {
               </div>
             )}
           </Paper>
+          <Button
+            variant="contained"
+            color="secondary"
+            className={classes.submit}
+            onClick={signOut}
+          >
+            Sign out
+          </Button>
         </div>
         <Box mt={8}>
           <Copyright />
