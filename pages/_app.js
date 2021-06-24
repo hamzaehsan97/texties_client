@@ -22,6 +22,8 @@ const theme = {
 export default class MyApp extends App {
   state = {
     user: null,
+    token: null,
+    errors: null,
   };
 
   componentDidMount = () => {
@@ -60,6 +62,7 @@ export default class MyApp extends App {
           {
             user: phone_number,
             token: res.data["access_token"],
+            errors: null,
           },
           () => {
             Router.push("/results");
@@ -67,7 +70,10 @@ export default class MyApp extends App {
         );
       })
       .catch((err) => {
-        console.log(err);
+        localStorage.setItem("errors", err);
+        this.setState({
+          errors: err.response.data["Error"],
+        });
       });
   };
 
@@ -89,6 +95,8 @@ export default class MyApp extends App {
       <UserContext.Provider
         value={{
           user: this.state.user,
+          token: this.state.token,
+          errors: this.state.errors,
           signIn: this.signIn,
           signOut: this.signOut,
         }}

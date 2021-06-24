@@ -93,8 +93,6 @@ export default function Home() {
       });
   };
   useEffect(() => {
-    console.log("user", user);
-    console.log("type", type);
     axios
       .get(
         "https://texties-test.herokuapp.com/get?type=" +
@@ -173,16 +171,18 @@ export default function Home() {
                         ))}
                       </TableRow>
                     </TableHead>
-                    {notes.map((note) => (
-                      <TableRow key={note.id}>
-                        <TableCell component="th" scope="row">
-                          {note.textie}
-                        </TableCell>
-                        <TableCell component="th" scope="row">
-                          {returnDate(note.created_date)}
-                        </TableCell>
-                      </TableRow>
-                    ))}
+                    <TableBody>
+                      {notes.map((note) => (
+                        <TableRow key={note.id}>
+                          <TableCell component="th" scope="row">
+                            {note.textie}
+                          </TableCell>
+                          <TableCell component="th" scope="row">
+                            {returnDate(note.created_date)}
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
                   </Table>
                 </TableContainer>
                 {/* <ul>

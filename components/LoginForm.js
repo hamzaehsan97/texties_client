@@ -1,24 +1,18 @@
 import React, { useState, useEffect, useContext } from "react";
-import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
-import { InputLabel, Select, MenuItem, Paper } from "@material-ui/core";
-// import { LockOutlinedIcon } from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import axios from "axios";
 import Copyright from "../pages/layout/copyright";
-import Link from "next/link";
-import Router from "next/dist/next-server/lib/router/router";
 import { useRouter } from "next/router";
 import TextieIcon from "../pages/layout//textie_icon";
 import UserContext from "./UserContext";
+import { CircularProgress } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -54,16 +48,18 @@ const useStyles = makeStyles((theme) => ({
 export default function LoginForm() {
   const router = useRouter();
   const classes = useStyles();
-  const { signIn } = useContext(UserContext);
+  const { signIn, errors } = useContext(UserContext);
+  const [loading, setLoading] = useState(false);
   const [auth_code, setAuth_code] = useState("");
   const [showAuth, setShowAuth] = useState(false);
   const [phone_number, setPhone_Number] = useState("");
   const [loginErrors, setLoginErrors] = useState([]);
   const handleSubmit = (e) => {
+    setLoading(true);
     axios
       .post("https://texties.herokuapp.com/auth?phone_number=" + phone_number)
       .then((res) => {
-        console.log(res);
+        setLoading(false);
         setShowAuth(true);
       })
       .catch((err) => {
@@ -75,7 +71,7 @@ export default function LoginForm() {
     if (phone_number != "" || auth_code != "") {
       signIn(phone_number, auth_code);
     } else {
-      setLoginErrors("Please enter phone number and authorization code");
+      setLoginErrors("Please enter your phone number and authorization code");
     }
   };
 
@@ -129,22 +125,39 @@ export default function LoginForm() {
                 </Button>
               </div>
             ) : (
-              <Button
-                fullWidth
-                variant="contained"
-                color="primary"
-                className={classes.submit}
-                onClick={handleSubmit}
+              <Grid
+                container
+                direction="column"
+                justify="center"
+                alignItems="center"
               >
-                Send Auth Code
-              </Button>
+                <Grid item>
+                  {" "}
+                  <Button
+                    fullWidth
+                    variant="contained"
+                    color="primary"
+                    className={classes.submit}
+                    onClick={handleSubmit}
+                  >
+                    Send Auth Code
+                  </Button>
+                </Grid>
+                <Grid item>
+                  {loading ? (
+                    <CircularProgress color="secondary" />
+                  ) : (
+                    <div></div>
+                  )}
+                </Grid>
+              </Grid>
             )}
             <Typography
               variant="subtitle1"
               className={classes.errorText}
               gutterBottom
             >
-              {loginErrors}
+              {errors}
             </Typography>
           </form>
         </div>
