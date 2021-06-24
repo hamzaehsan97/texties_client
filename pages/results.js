@@ -157,7 +157,7 @@ export default function Home() {
                   <Table stickyHeader>
                     <TableHead>
                       <TableRow>
-                        {columns.slice(0).reverse().map((column) => (
+                        {columns.map((column) => (
                           <TableCell
                             key={column.id}
                             align={column.align}
@@ -172,7 +172,7 @@ export default function Home() {
                       </TableRow>
                     </TableHead>
                     <TableBody>
-                      {notes.map((note) => (
+                      {notes.slice(0).reverse().map((note) => (
                         <TableRow key={note.id}>
                           <TableCell component="th" scope="row">
                             {note.textie}
