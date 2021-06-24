@@ -2,7 +2,22 @@ import React from "react";
 import App from "next/app";
 import Router from "next/router";
 import UserContext from "../components/UserContext";
+import { createGlobalStyle, ThemeProvider } from "styled-components";
 import axios from "axios";
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+`;
+
+const theme = {
+  colors: {
+    primary: "#0070f3",
+  },
+};
 
 export default class MyApp extends App {
   state = {
@@ -78,7 +93,10 @@ export default class MyApp extends App {
           signOut: this.signOut,
         }}
       >
-        <Component {...pageProps} />
+        <GlobalStyle />
+        <ThemeProvider theme={theme}>
+          <Component {...pageProps} />
+        </ThemeProvider>
       </UserContext.Provider>
     );
   }
