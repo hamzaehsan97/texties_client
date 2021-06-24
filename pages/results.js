@@ -157,7 +157,7 @@ export default function Home() {
                   <Table stickyHeader>
                     <TableHead>
                       <TableRow>
-                        {columns.map((column) => (
+                        {columns.slice(0).reverse().map((column) => (
                           <TableCell
                             key={column.id}
                             align={column.align}
