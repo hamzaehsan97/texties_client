@@ -27,6 +27,7 @@ import {
 } from "@material-ui/core";
 import { useContext } from "react";
 import UserContext from "../components/UserContext";
+import SignOutButton from "./layout/signout_button";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -172,16 +173,19 @@ export default function Home() {
                       </TableRow>
                     </TableHead>
                     <TableBody>
-                      {notes.slice(0).reverse().map((note) => (
-                        <TableRow key={note.id}>
-                          <TableCell component="th" scope="row">
-                            {note.textie}
-                          </TableCell>
-                          <TableCell component="th" scope="row">
-                            {returnDate(note.created_date)}
-                          </TableCell>
-                        </TableRow>
-                      ))}
+                      {notes
+                        .slice(0)
+                        .reverse()
+                        .map((note) => (
+                          <TableRow key={note.id}>
+                            <TableCell component="th" scope="row">
+                              {note.textie}
+                            </TableCell>
+                            <TableCell component="th" scope="row">
+                              {returnDate(note.created_date)}
+                            </TableCell>
+                          </TableRow>
+                        ))}
                     </TableBody>
                   </Table>
                 </TableContainer>
@@ -195,7 +199,7 @@ export default function Home() {
               </div>
             )}
           </Paper>
-          <Button
+          {/* <Button
             variant="contained"
             color="secondary"
             className={classes.submit}
@@ -203,6 +207,8 @@ export default function Home() {
           >
             Sign out
           </Button>
+           */}
+          <SignOutButton />
         </div>
         <Box mt={8}>
           <Copyright />
