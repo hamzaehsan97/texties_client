@@ -76,6 +76,7 @@ export default function Home() {
   const [notes, setNotes] = useState([]);
   const [type, setType] = useState("note");
   const [loading, setLoading] = useState(true);
+  const [searchText, setSeachText] = useState("");
   const handleChange = (e) => {
     // setType(e.target.value);
     setLoading(true);
@@ -94,10 +95,31 @@ export default function Home() {
         console.log(err);
       });
   };
+
+  const handleSearchChange = (e) => {
+    // setLoading(true);
+    setSeachText(e);
+    axios
+      .get(
+        "https://texties.herokuapp.com/search?type=" +
+          type +
+          "&search_text=" +
+          e +
+          "&phone_number=" +
+          user
+      )
+      .then((res) => {
+        setLoading(false);
+        setNotes(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   useEffect(() => {
     axios
       .get(
-        "https://texties-test.herokuapp.com/get?type=" +
+        "https://texties.herokuapp.com/get?type=" +
           type +
           "&phone_number=" +
           user
@@ -120,7 +142,6 @@ export default function Home() {
             <InputLabel id="type" required={true}>
               Textie Type
             </InputLabel>
-
             <Select
               fullWidth
               label="Textie Type"
@@ -148,7 +169,17 @@ export default function Home() {
               Submit
             </Button>
           </form>
-          <Paper className={classes.paper}>
+
+          <Paper className={classes.paper} fullWidth>
+            <TextField
+              fullWidth
+              id="outlined-basic"
+              label="Search Texties"
+              variant="outlined"
+              value={searchText}
+              onChange={(e) => handleSearchChange(e.target.value)}
+              style={{ paddingTop: "5px", paddingBottom: "10px" }}
+            />
             {loading ? (
               <div>
                 <CircularProgress color="secondary" />
@@ -190,7 +221,6 @@ export default function Home() {
               </div>
             )}
           </Paper>
-
           <SignOutButton />
         </div>
         <Box mt={8}>
