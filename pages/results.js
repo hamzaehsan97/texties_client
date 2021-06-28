@@ -28,6 +28,7 @@ import {
 import { useContext } from "react";
 import UserContext from "../components/UserContext";
 import SignOutButton from "./layout/signout_button";
+import TextieContent from "./layout/textie_content";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -66,7 +67,7 @@ const returnDate = (date) => {
 
 const columns = [
   { id: "textie", label: "Textie" },
-  { id: "date", label: "Date", minWidth: 100 },
+  { id: "date", label: "Date", minWidth: 105 },
 ];
 
 export default function Home() {
@@ -177,37 +178,19 @@ export default function Home() {
                         .slice(0)
                         .reverse()
                         .map((note) => (
-                          <TableRow key={note.id}>
-                            <TableCell component="th" scope="row">
-                              {note.textie}
-                            </TableCell>
-                            <TableCell component="th" scope="row">
-                              {returnDate(note.created_date)}
-                            </TableCell>
-                          </TableRow>
+                          <TextieContent
+                            textie={note.textie}
+                            date={returnDate(note.created_date)}
+                            id={note.id}
+                          />
                         ))}
                     </TableBody>
                   </Table>
                 </TableContainer>
-                {/* <ul>
-                  {notes.map((note) => (
-                    <li key={note.id}>
-                      <Typography>{note.textie}</Typography>
-                    </li>
-                  ))}
-                </ul> */}
               </div>
             )}
           </Paper>
-          {/* <Button
-            variant="contained"
-            color="secondary"
-            className={classes.submit}
-            onClick={signOut}
-          >
-            Sign out
-          </Button>
-           */}
+
           <SignOutButton />
         </div>
         <Box mt={8}>
