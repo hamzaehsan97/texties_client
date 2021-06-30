@@ -16,7 +16,8 @@ import { Typography } from "@material-ui/core";
 import { CircularProgress } from "@material-ui/core";
 import Snackbar from "@material-ui/core/Snackbar";
 import CloseIcon from "@material-ui/icons/Close";
-
+import { Grid } from "@material-ui/core";
+import CancelIcon from "@material-ui/icons/Cancel";
 const useStyles = makeStyles((theme) => ({
   dialog: {
     minWidth: 100 + "%",
@@ -117,6 +118,21 @@ export default function TextieContent(props) {
         aria-describedby="alert-dialog-slide-description"
       >
         <DialogContent>
+          <Grid
+            container
+            direction="row"
+            justify="flex-end"
+            alignItems="flex-start"
+          >
+            <IconButton
+              size="small"
+              aria-label="close"
+              color="inherit"
+              onClick={handleClose}
+            >
+              <CancelIcon fontSize="large" />
+            </IconButton>
+          </Grid>
           <TextField
             id="outlined-multiline-static"
             label="Edit Textie"
