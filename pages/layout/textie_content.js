@@ -107,6 +107,7 @@ export default function TextieContent(props) {
         {props.date}
       </TableCell>
       <Dialog
+        fullScreen
         fullWidth
         open={open}
         TransitionComponent={Transition}
