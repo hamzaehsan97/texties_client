@@ -29,7 +29,7 @@ import { useContext } from "react";
 import UserContext from "../components/UserContext";
 import SignOutButton from "./layout/signout_button";
 import TextieContent from "./layout/textie_content";
-
+import AddTextie from "./layout/add_textie";
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(5),
@@ -160,26 +160,48 @@ export default function Home() {
               <MenuItem value={"idea"}>Ideas</MenuItem>
               <MenuItem value={"weight"}>Weight</MenuItem>
             </Select>
-            <Button
-              variant="contained"
-              color="secondary"
-              className={classes.submit}
-              onClick={handleChange}
+            <Grid
+              container
+              direction="row"
+              justify="space-between"
+              alignItems="center"
             >
-              Submit
-            </Button>
+              <Grid item>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  className={classes.submit}
+                  onClick={handleChange}
+                >
+                  Submit
+                </Button>
+              </Grid>
+
+              <Grid item style={{ marginLeft: "-10px" }}>
+                <AddTextie />
+              </Grid>
+            </Grid>
           </form>
 
-          <Paper className={classes.paper} fullWidth>
-            <TextField
-              fullWidth
-              id="outlined-basic"
-              label="Search Texties"
-              variant="outlined"
-              value={searchText}
-              onChange={(e) => handleSearchChange(e.target.value)}
-              style={{ paddingTop: "5px", paddingBottom: "10px" }}
-            />
+          <Paper className={classes.paper}>
+            <Grid
+              container
+              direction="row"
+              justify="flex-start"
+              alignItems="center"
+            >
+              <Grid item xs={12}>
+                <TextField
+                  fullWidth
+                  id="outlined-basic"
+                  label="Search Texties"
+                  variant="outlined"
+                  value={searchText}
+                  onChange={(e) => handleSearchChange(e.target.value)}
+                  style={{ paddingTop: "5px", paddingBottom: "10px" }}
+                />
+              </Grid>
+            </Grid>
             {loading ? (
               <div>
                 <CircularProgress color="secondary" />
