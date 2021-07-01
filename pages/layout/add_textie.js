@@ -16,6 +16,8 @@ import { useState } from "react";
 import { Typography } from "@material-ui/core";
 import axios from "axios";
 import { CircularProgress } from "@material-ui/core";
+import CancelIcon from "@material-ui/icons/Cancel";
+import { Grid } from "@material-ui/core";
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -78,6 +80,7 @@ export default function AddTextie() {
       >
         <AddCircleIcon fontSize="large" color="secondary" />
       </IconButton>
+
       <Dialog
         fullScreen
         fullWidth
@@ -88,6 +91,22 @@ export default function AddTextie() {
         aria-labelledby="alert-dialog-slide-title"
         aria-describedby="alert-dialog-slide-description"
       >
+        <Grid
+          container
+          direction="row"
+          justify="flex-end"
+          alignItems="flex-start"
+        >
+          <IconButton
+            size="small"
+            aria-label="close"
+            color="inherit"
+            onClick={handleClose}
+            style={{ marginRight: "20px" }}
+          >
+            <CancelIcon fontSize="large" />
+          </IconButton>
+        </Grid>
         <DialogContent>
           <TextField
             id="outlined-multiline-static"
@@ -119,15 +138,6 @@ export default function AddTextie() {
               >
                 Save
               </Button>{" "}
-              <Button
-                variant="contained"
-                className={classes.submit}
-                disableElevation
-                onClick={handleClose}
-                style={{ marginRight: "10px" }}
-              >
-                Cancel
-              </Button>
               <br />
               <Typography
                 variant="subtitle1"
