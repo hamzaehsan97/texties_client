@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <Container component="main" maxWidth="xs">
       <Head>
-        <title>Texties: Storage through SMS</title>
+        <title>Texties: Sksksksks</title>
       </Head>
       <LoginForm />
     </Container>
