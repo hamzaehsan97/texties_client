@@ -4,6 +4,7 @@ import Router from "next/router";
 import UserContext from "../components/UserContext";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import axios from "axios";
+import Head from "next/head";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -103,6 +104,9 @@ export default class MyApp extends App {
       >
         <GlobalStyle />
         <ThemeProvider theme={theme}>
+          <Head>
+            <title>Texties: Sksksksks</title>
+          </Head>
           <Component {...pageProps} />
         </ThemeProvider>
       </UserContext.Provider>
