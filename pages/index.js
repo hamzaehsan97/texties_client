@@ -55,26 +55,6 @@ export default function Home() {
   const [showAuth, setShowAuth] = useState(false);
   const [phone_number, setPhone_Number] = useState("");
   const [loginErrors, setLoginErrors] = useState([]);
-  const handleSubmit = (e) => {
-    setLoading(true);
-    axios
-      .post("https://texties.herokuapp.com/auth?phone_number=" + phone_number)
-      .then((res) => {
-        setLoading(false);
-        setShowAuth(true);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  const handleSubmitAuth = (e) => {
-    if (phone_number != "" || auth_code != "") {
-      signIn(phone_number, auth_code);
-    } else {
-      setLoginErrors("Please enter your phone number and authorization code");
-    }
-  };
 
   return (
     <Grid
@@ -112,7 +92,11 @@ export default function Home() {
           alignItems="center"
         >
           <Grid item>
-            <Image src={textiesGif} width={207} height={392} />
+            <Image
+              src="https://www.github.com/hamzaehsan97/texties_client/blob/master/public/textiesGIF.gif"
+              width={207}
+              height={392}
+            />
           </Grid>
         </Grid>
       </Grid>
