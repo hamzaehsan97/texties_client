@@ -5,6 +5,11 @@ import UserContext from "../components/UserContext";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import axios from "axios";
 import Head from "next/head";
+import * as gtag from "../lib/gtag";
+import Script from "next/script";
+import Box from "@material-ui/core/Box";
+import Copyright from "./layout/copyright";
+import NavBar from "./layout/navbar";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -37,8 +42,6 @@ export default class MyApp extends App {
         token,
       });
       Router.push("/results");
-    } else {
-      Router.push("/");
     }
   };
 
@@ -81,7 +84,6 @@ export default class MyApp extends App {
   signOut = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-
     this.setState({
       user: null,
       token: null,
@@ -104,10 +106,33 @@ export default class MyApp extends App {
       >
         <GlobalStyle />
         <ThemeProvider theme={theme}>
+          {/* Global Site Tag (gtag.js) - Google Analytics */}
+          <Script
+            strategy="afterInteractive"
+            src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
+          />
+          <Script
+            id="gtag-init"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${gtag.GA_TRACKING_ID}', {
+              page_path: window.location.pathname,
+            });
+          `,
+            }}
+          />
           <Head>
             <title key="title">Texties: Sksksksks</title>
           </Head>
+          <NavBar />
           <Component {...pageProps} />
+          <Box mt={8}>
+            <Copyright />
+          </Box>
         </ThemeProvider>
       </UserContext.Provider>
     );

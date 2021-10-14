@@ -1,21 +1,13 @@
 import React, { useState, useEffect } from "react";
-import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
-import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
-import Box from "@material-ui/core/Box";
 import { InputLabel, Select, MenuItem, Paper } from "@material-ui/core";
-// import { LockOutlinedIcon } from "@material-ui/icons/LockOutlined";
-import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import axios from "axios";
-import Copyright from "./layout/copyright";
 import TextieIcon from "./layout/textie_icon";
 import {
   TableContainer,
@@ -30,6 +22,8 @@ import UserContext from "../components/UserContext";
 import SignOutButton from "./layout/signout_button";
 import TextieContent from "./layout/textie_content";
 import AddTextie from "./layout/add_textie";
+import Router from "next/router";
+
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(5),
@@ -78,7 +72,6 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [searchText, setSeachText] = useState("");
   const handleChange = (e) => {
-    // setType(e.target.value);
     setLoading(true);
     axios
       .get(
@@ -117,6 +110,9 @@ export default function Home() {
       });
   };
   useEffect(() => {
+    if (user === null) {
+      Router.push("/");
+    }
     axios
       .get(
         "https://texties.herokuapp.com/get?type=" +
@@ -245,9 +241,6 @@ export default function Home() {
           </Paper>
           <SignOutButton />
         </div>
-        <Box mt={8}>
-          <Copyright />
-        </Box>
       </Grid>
     </Container>
   );

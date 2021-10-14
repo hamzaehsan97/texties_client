@@ -3,7 +3,6 @@ import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
-import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
@@ -12,7 +11,9 @@ import Copyright from "../pages/layout/copyright";
 import { useRouter } from "next/router";
 import TextieIcon from "../pages/layout//textie_icon";
 import UserContext from "./UserContext";
-import { CircularProgress } from "@material-ui/core";
+import { CardActionArea, CircularProgress } from "@material-ui/core";
+import Image from "next/image";
+import textiesGif from "../public/textiesGif.gif";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -76,122 +77,94 @@ export default function LoginForm() {
   };
 
   return (
-    // <Container component="main" maxWidth="xs">
     <Grid
       container
-      direction="row"
-      spacing={2}
+      direction="column"
       justifyContent="center"
       alignItems="center"
-      style={{ paddingTop: "10vh" }}
     >
-      <Grid item lg={5} xs={12}>
-        <Typography variant="h2">
-          <b>Reimagining notes 📓</b>
-        </Typography>
-        <Typography variant="h6">
-          Texties helps you keep track of your notes. Sign-up today!
-        </Typography>
-      </Grid>
-      <Grid item lg={7} xs={12}>
-        <Grid
-          container
-          direction="column"
-          justifyContent="center"
-          alignItems="center"
-        >
-          <Grid item>
-            <CssBaseline />
-            <div className={classes.paper}>
-              <TextieIcon />
-              <Typography component="h1" variant="h4">
-                Log in to Textie!
-              </Typography>
-              <form className={classes.form}>
+      <Grid item>
+        <CssBaseline />
+        <div className={classes.paper}>
+          <TextieIcon />
+          <form className={classes.form}>
+            <TextField
+              variant="outlined"
+              className={classes.inputText}
+              margin="normal"
+              required
+              fullWidth
+              value={phone_number}
+              name="phone_number"
+              label="Phone Number"
+              type="phone_number"
+              id="phone_number"
+              autoComplete="phone_number"
+              onChange={(e) => setPhone_Number(e.target.value)}
+            />
+            {showAuth ? (
+              <div>
                 <TextField
                   variant="outlined"
-                  className={classes.inputText}
                   margin="normal"
                   required
                   fullWidth
-                  value={phone_number}
-                  name="phone_number"
-                  label="Phone Number"
-                  type="phone_number"
-                  id="phone_number"
-                  autoComplete="phone_number"
-                  onChange={(e) => setPhone_Number(e.target.value)}
+                  value={auth_code}
+                  name="auth_code"
+                  label="Authorization code"
+                  type="auth_code"
+                  id="auth_code"
+                  autoComplete="auth_code"
+                  onChange={(e) => setAuth_code(e.target.value)}
                 />
-                {showAuth ? (
-                  <div>
-                    <TextField
-                      variant="outlined"
-                      margin="normal"
-                      required
-                      fullWidth
-                      value={auth_code}
-                      name="auth_code"
-                      label="Authorization code"
-                      type="auth_code"
-                      id="auth_code"
-                      autoComplete="auth_code"
-                      onChange={(e) => setAuth_code(e.target.value)}
-                    />
-                    <Button
-                      fullWidth
-                      variant="contained"
-                      color="primary"
-                      className={classes.submit}
-                      onClick={handleSubmitAuth}
-                    >
-                      Login
-                    </Button>
-                  </div>
-                ) : (
-                  <Grid
-                    container
-                    direction="column"
-                    justify="center"
-                    alignItems="center"
-                  >
-                    <Grid item>
-                      {" "}
-                      <Button
-                        fullWidth
-                        variant="contained"
-                        color="primary"
-                        className={classes.submit}
-                        onClick={handleSubmit}
-                      >
-                        Send Auth Code
-                      </Button>
-                    </Grid>
-                    <Grid item>
-                      {loading ? (
-                        <CircularProgress color="secondary" />
-                      ) : (
-                        <div></div>
-                      )}
-                    </Grid>
-                  </Grid>
-                )}
-                <Typography
-                  variant="subtitle1"
-                  className={classes.errorText}
-                  gutterBottom
+                <Button
+                  fullWidth
+                  variant="contained"
+                  color="primary"
+                  className={classes.submit}
+                  onClick={handleSubmitAuth}
                 >
-                  {errors}
-                </Typography>
-              </form>
-            </div>
-          </Grid>
-
-          <Box mt={8}>
-            <Copyright />
-          </Box>
-        </Grid>
+                  Login
+                </Button>
+              </div>
+            ) : (
+              <Grid
+                container
+                direction="column"
+                justify="center"
+                alignItems="center"
+              >
+                <Grid item>
+                  {" "}
+                  <Button
+                    fullWidth
+                    variant="contained"
+                    color="primary"
+                    className={classes.submit}
+                    onClick={handleSubmit}
+                  >
+                    Send Auth Code
+                  </Button>
+                </Grid>
+                <Grid item>
+                  {loading ? (
+                    <CircularProgress color="secondary" />
+                  ) : (
+                    <div></div>
+                  )}
+                </Grid>
+              </Grid>
+            )}
+            <Typography
+              variant="subtitle1"
+              className={classes.errorText}
+              gutterBottom
+            >
+              {errors}
+            </Typography>
+          </form>
+        </div>
       </Grid>
     </Grid>
-    // </Container>
   );
 }
