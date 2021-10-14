@@ -76,95 +76,117 @@ export default function LoginForm() {
   };
 
   return (
-    <Container component="main" maxWidth="xs">
-      <Grid container direction="column" justify="center" alignItems="center">
-        <CssBaseline />
-        <div className={classes.paper}>
-          <TextieIcon />
-          <Typography component="h1" variant="h5">
-            Log in to Textie!
-          </Typography>
-          <form className={classes.form}>
-            <TextField
-              variant="outlined"
-              className={classes.inputText}
-              margin="normal"
-              required
-              fullWidth
-              value={phone_number}
-              name="phone_number"
-              label="Phone Number"
-              type="phone_number"
-              id="phone_number"
-              autoComplete="phone_number"
-              onChange={(e) => setPhone_Number(e.target.value)}
-            />
-            {showAuth ? (
-              <div>
+    // <Container component="main" maxWidth="xs">
+    <Grid
+      container
+      direction="row"
+      spacing={2}
+      justifyContent="center"
+      alignItems="center"
+      style={{ paddingTop: "10vh" }}
+    >
+      <Grid item lg={5}>
+        <Typography variant="h2">
+          <b>Reimagining notes 📓</b>
+        </Typography>
+        <Typography variant="h6">
+          Texties helps you keep track of your notes. Sign-up today!
+        </Typography>
+      </Grid>
+      <Grid item lg={7}>
+        <Grid container direction="column" justify="center" alignItems="center">
+          <Grid item>
+            <CssBaseline />
+            <div className={classes.paper}>
+              <TextieIcon />
+              <Typography component="h1" variant="h4">
+                Log in to Textie!
+              </Typography>
+              <form className={classes.form}>
                 <TextField
                   variant="outlined"
+                  className={classes.inputText}
                   margin="normal"
                   required
                   fullWidth
-                  value={auth_code}
-                  name="auth_code"
-                  label="Authorization code"
-                  type="auth_code"
-                  id="auth_code"
-                  autoComplete="auth_code"
-                  onChange={(e) => setAuth_code(e.target.value)}
+                  value={phone_number}
+                  name="phone_number"
+                  label="Phone Number"
+                  type="phone_number"
+                  id="phone_number"
+                  autoComplete="phone_number"
+                  onChange={(e) => setPhone_Number(e.target.value)}
                 />
-                <Button
-                  fullWidth
-                  variant="contained"
-                  color="primary"
-                  className={classes.submit}
-                  onClick={handleSubmitAuth}
-                >
-                  Login
-                </Button>
-              </div>
-            ) : (
-              <Grid
-                container
-                direction="column"
-                justify="center"
-                alignItems="center"
-              >
-                <Grid item>
-                  {" "}
-                  <Button
-                    fullWidth
-                    variant="contained"
-                    color="primary"
-                    className={classes.submit}
-                    onClick={handleSubmit}
+                {showAuth ? (
+                  <div>
+                    <TextField
+                      variant="outlined"
+                      margin="normal"
+                      required
+                      fullWidth
+                      value={auth_code}
+                      name="auth_code"
+                      label="Authorization code"
+                      type="auth_code"
+                      id="auth_code"
+                      autoComplete="auth_code"
+                      onChange={(e) => setAuth_code(e.target.value)}
+                    />
+                    <Button
+                      fullWidth
+                      variant="contained"
+                      color="primary"
+                      className={classes.submit}
+                      onClick={handleSubmitAuth}
+                    >
+                      Login
+                    </Button>
+                  </div>
+                ) : (
+                  <Grid
+                    container
+                    direction="column"
+                    justify="center"
+                    alignItems="center"
                   >
-                    Send Auth Code
-                  </Button>
-                </Grid>
-                <Grid item>
-                  {loading ? (
-                    <CircularProgress color="secondary" />
-                  ) : (
-                    <div></div>
-                  )}
-                </Grid>
-              </Grid>
-            )}
-            <Typography
-              variant="subtitle1"
-              className={classes.errorText}
-              gutterBottom
-            >
-              {errors}
-            </Typography>
-          </form>
-        </div>
-        <Box mt={8}>
-          <Copyright />
-        </Box>
+                    <Grid item>
+                      {" "}
+                      <Button
+                        fullWidth
+                        variant="contained"
+                        color="primary"
+                        className={classes.submit}
+                        onClick={handleSubmit}
+                      >
+                        Send Auth Code
+                      </Button>
+                    </Grid>
+                    <Grid item>
+                      {loading ? (
+                        <CircularProgress color="secondary" />
+                      ) : (
+                        <div></div>
+                      )}
+                    </Grid>
+                  </Grid>
+                )}
+                <Typography
+                  variant="subtitle1"
+                  className={classes.errorText}
+                  gutterBottom
+                >
+                  {errors}
+                </Typography>
+              </form>
+            </div>
+          </Grid>
+
+          <Box mt={8}>
+            <Copyright />
+          </Box>
+        </Grid>
       </Grid>
-    </Container>
+    </Grid>
+    // </Container>
   );
 }

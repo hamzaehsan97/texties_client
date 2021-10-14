@@ -5,7 +5,7 @@ import Head from "next/head";
 
 export default function Home() {
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" fixed>
       <Head>
         <title>Texties: Sksksksks</title>
       </Head>
