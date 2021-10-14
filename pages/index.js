@@ -13,7 +13,6 @@ import TextieIcon from "../pages/layout//textie_icon";
 import UserContext from "../components/UserContext";
 import { CardActionArea, CircularProgress } from "@material-ui/core";
 import Image from "next/image";
-import { textiesGif } from "../public/textiesGIF.gif";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -92,11 +91,7 @@ export default function Home() {
           alignItems="center"
         >
           <Grid item>
-            <Image
-              src="https://www.github.com/hamzaehsan97/texties_client/blob/master/public/textiesGIF.gif"
-              width={207}
-              height={392}
-            />
+            <Image src="/../static/textiesGIF.gif" width={207} height={392} />
           </Grid>
         </Grid>
       </Grid>
