@@ -13,7 +13,7 @@ import TextieIcon from "../pages/layout//textie_icon";
 import UserContext from "../components/UserContext";
 import { CardActionArea, CircularProgress } from "@material-ui/core";
 import Image from "next/image";
-import textiesGif from "../public/textiesGif.gif";
+import { textiesGif } from "../public/textiesGIF.gif";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
