@@ -105,7 +105,7 @@ export default class MyApp extends App {
         <GlobalStyle />
         <ThemeProvider theme={theme}>
           <Head>
-            <title>Texties: Sksksksks</title>
+            <title key="title">Texties: Sksksksks</title>
           </Head>
           <Component {...pageProps} />
         </ThemeProvider>

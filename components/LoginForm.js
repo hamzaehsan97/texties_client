@@ -85,7 +85,7 @@ export default function LoginForm() {
       alignItems="center"
       style={{ paddingTop: "10vh" }}
     >
-      <Grid item lg={5}>
+      <Grid item lg={5} xs={12}>
         <Typography variant="h2">
           <b>Reimagining notes 📓</b>
         </Typography>
@@ -93,8 +93,13 @@ export default function LoginForm() {
           Texties helps you keep track of your notes. Sign-up today!
         </Typography>
       </Grid>
-      <Grid item lg={7}>
-        <Grid container direction="column" justify="center" alignItems="center">
+      <Grid item lg={7} xs={12}>
+        <Grid
+          container
+          direction="column"
+          justifyContent="center"
+          alignItems="center"
+        >
           <Grid item>
             <CssBaseline />
             <div className={classes.paper}>
