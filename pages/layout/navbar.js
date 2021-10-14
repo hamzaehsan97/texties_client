@@ -6,16 +6,6 @@ import { Toolbar } from "@material-ui/core";
 import { Typography } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 import { Grid } from "@material-ui/core";
-// const useStyles = makeStyles((theme) => ({
-//   paper: {
-//     marginTop: theme.spacing(10),
-//     padding: theme.spacing(1),
-//     display: "flex",
-//     flexDirection: "column",
-//     alignItems: "center",
-//     width: 100 + "%",
-//   },
-// }));
 
 export default function NavBar() {
   const { user } = useContext(UserContext);
