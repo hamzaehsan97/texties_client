@@ -7,33 +7,23 @@ import UserContext from "../components/UserContext";
 import Image from "next/image";
 
 const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(10),
-    padding: theme.spacing(1),
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    width: 100 + "%",
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: "100%", // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
-  },
-  inputText: {
-    width: 100 + "%",
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
-  select: { minHeight: 50, fontSize: 1.5 + "em" },
-  errorText: {
-    textAlign: "center",
-    color: "red",
+  h2: {
+    fontSize: "4.0em",
     fontWeight: "bolder",
+    margin: theme.spacing(2, 0, 1),
+    textAlign: "center",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "2.5em",
+    },
+  },
+  h6: {
+    fontSize: "1.0em",
+    margin: theme.spacing(2, 0, 1),
+    textAlign: "center",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "1em",
+      padding: theme.spacing(0, 2, 0),
+    },
   },
 }));
 
@@ -66,10 +56,10 @@ export default function Home() {
           spacing={5}
         >
           <Grid item>
-            <Typography variant="h2">
+            <Typography variant="h2" className={classes.h2}>
               <b>Reimagining notes 📓</b>
             </Typography>
-            <Typography variant="h6">
+            <Typography variant="h6" className={classes.h6}>
               Texties helps you keep track of your notes. Sign-up today!
             </Typography>
           </Grid>
