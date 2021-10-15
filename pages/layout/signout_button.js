@@ -37,7 +37,7 @@ export default function SignOutButton() {
   return (
     <div>
       <Button
-        variant="contained"
+        variant="inherit"
         color="secondary"
         className={classes.submit}
         onClick={handleClickOpen}
