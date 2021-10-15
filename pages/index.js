@@ -57,7 +57,7 @@ export default function Home() {
       style={{ paddingTop: "10vh" }}
     >
       <Grid item ls={1} xs={1}></Grid>
-      <Grid item lg={5} xs={12}>
+      <Grid item lg={5} xs={12} style={{ paddingBottom: "20px" }}>
         <Grid
           container
           direction="column"
