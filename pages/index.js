@@ -83,7 +83,12 @@ export default function Home() {
           alignItems="center"
         >
           <Grid item>
-            <Image src="/textiesGIF.gif" width={310} height={588} />
+            <Image
+              src="/visual-guide.gif"
+              width={310}
+              height={588}
+              alt="visual-gif"
+            />
           </Grid>
         </Grid>
       </Grid>
