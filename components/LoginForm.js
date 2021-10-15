@@ -5,14 +5,10 @@ import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
 import axios from "axios";
-import Copyright from "../pages/layout/copyright";
 import { useRouter } from "next/router";
 import TextieIcon from "../pages/layout//textie_icon";
 import UserContext from "./UserContext";
-import { CardActionArea, CircularProgress } from "@material-ui/core";
-import Image from "next/image";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
