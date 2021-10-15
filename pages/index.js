@@ -87,7 +87,9 @@ export default function Home() {
               src="/visual-guide.gif"
               width={310}
               height={588}
+              placeholder="blur"
               alt="visual-gif"
+              blurDataURL="data:..."
             />
           </Grid>
         </Grid>

@@ -9,6 +9,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import TextieIcon from "../pages/layout//textie_icon";
 import UserContext from "./UserContext";
+import { CircularProgress } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
