@@ -91,6 +91,13 @@ export default class MyApp extends App {
     Router.push("/");
   };
 
+  useEffect = () => {
+    const jssStyles = document.querySelector("#jss-server-side");
+    if (jssStyles) {
+      jssStyles.parentElement.removeChild(jssStyles);
+    }
+  };
+
   render() {
     const { Component, pageProps } = this.props;
 
