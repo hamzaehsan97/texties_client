@@ -9,7 +9,7 @@
         "transpileTemplateLiterals": true,
         "pure": true,
         "displayName": true,
-        "preprocess": false
+        "preprocess": true
       }
     ]
   ]
