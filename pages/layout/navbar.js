@@ -6,6 +6,7 @@ import { Typography } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 import { Grid } from "@material-ui/core";
 import SignOutButton from "./signout_button";
+import styles from "../../styles/layout/navbar.module.css";
 
 export default function NavBar() {
   const { user } = useContext(UserContext);
@@ -37,7 +38,9 @@ export default function NavBar() {
           </Grid>
           <Grid item>
             {isUser ? (
-              <SignOutButton />
+              <div className={styles.signout_button}>
+                <SignOutButton />
+              </div>
             ) : (
               <Button color="inherit" style={{ margin: "5px" }} href="/login">
                 Login

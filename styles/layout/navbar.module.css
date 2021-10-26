@@ -1,0 +1,6 @@
+@media (max-width: 900px) {
+  .signout_button {
+    display: none;
+    height: 300px;
+  }
+}
