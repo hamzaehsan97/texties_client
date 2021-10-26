@@ -9,20 +9,12 @@ import Slide from "@material-ui/core/Slide";
 import { makeStyles } from "@material-ui/core/styles";
 import { useContext } from "react";
 import UserContext from "../../components/UserContext";
-
+import styles from "../../styles/layout/signout_button.module.css";
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const useStyles = makeStyles((theme) => ({
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-    marginTop: 10,
-  },
-}));
-
 export default function SignOutButton() {
-  const classes = useStyles();
   const { signOut } = useContext(UserContext);
   const [open, setOpen] = React.useState(false);
 
@@ -39,7 +31,7 @@ export default function SignOutButton() {
       <Button
         variant="inherit"
         color="secondary"
-        className={classes.submit}
+        className={styles.submit}
         onClick={handleClickOpen}
       >
         Sign out
@@ -63,7 +55,7 @@ export default function SignOutButton() {
           <Button
             variant="contained"
             color="secondary"
-            className={classes.submit}
+            className={styles.submit}
             onClick={signOut}
             disableElevation
           >

@@ -1,5 +1,4 @@
 import { TableCell } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core";
 import { TableRow } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
@@ -18,24 +17,13 @@ import Snackbar from "@material-ui/core/Snackbar";
 import CloseIcon from "@material-ui/icons/Close";
 import { Grid } from "@material-ui/core";
 import CancelIcon from "@material-ui/icons/Cancel";
-const useStyles = makeStyles((theme) => ({
-  dialog: {
-    minWidth: 100 + "%",
-  },
-  title: {
-    alignItems: "right",
-  },
-  submit: {
-    marginRight: theme.spacing(2),
-  },
-}));
+import styles from "../../styles/layout/textie_content.module.css";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
 export default function TextieContent(props) {
-  const classes = useStyles();
   const [snackOpen, setSnackOpen] = React.useState(false);
   const [loading, setLoading] = useState(false);
   const [textieText, setTextieText] = useState(props.textie);
@@ -139,7 +127,7 @@ export default function TextieContent(props) {
             multiline
             rows={8}
             defaultValue={props.textie}
-            className={classes.dialog}
+            className={styles.dialog}
             variant="outlined"
             fullWidth
             onChange={(e) => setTextieText(e.target.value)}
@@ -159,7 +147,7 @@ export default function TextieContent(props) {
               <Button
                 variant="contained"
                 color="secondary"
-                className={classes.submit}
+                className={styles.submit}
                 disableElevation
                 onClick={handleUpdate}
               >
@@ -168,7 +156,7 @@ export default function TextieContent(props) {
               <br />
               <Typography
                 variant="subtitle1"
-                className={classes.errorText}
+                className={styles.errorText}
                 gutterBottom
               >
                 {errors}
@@ -202,7 +190,3 @@ export default function TextieContent(props) {
     </TableRow>
   );
 }
-
-// export default function TextieContent() {
-//   return <div></div>;
-// }

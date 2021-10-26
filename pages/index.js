@@ -1,42 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
 import { useRouter } from "next/router";
 import UserContext from "../components/UserContext";
 import Image from "next/image";
-
-const useStyles = makeStyles((theme) => ({
-  h2: {
-    fontSize: "4.0em",
-    fontWeight: "bolder",
-    margin: theme.spacing(2, 0, 1),
-    textAlign: "center",
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "2.5em",
-    },
-  },
-  h6: {
-    fontSize: "1.0em",
-    margin: theme.spacing(2, 0, 1),
-    textAlign: "center",
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "1em",
-      padding: theme.spacing(0, 2, 0),
-    },
-  },
-}));
+import styles from "../styles/index.module.css";
 
 export default function Home() {
-  const router = useRouter();
-  const classes = useStyles();
-  const { signIn, errors } = useContext(UserContext);
-  const [loading, setLoading] = useState(false);
-  const [auth_code, setAuth_code] = useState("");
-  const [showAuth, setShowAuth] = useState(false);
-  const [phone_number, setPhone_Number] = useState("");
-  const [loginErrors, setLoginErrors] = useState([]);
-
   return (
     <Grid
       container
@@ -56,10 +26,10 @@ export default function Home() {
           spacing={5}
         >
           <Grid item>
-            <Typography variant="h2" className={classes.h2}>
+            <Typography variant="h2" className={styles.title}>
               <b>Reimagining notes 📓</b>
             </Typography>
-            <Typography variant="h6" className={classes.h6}>
+            <Typography variant="h6" className={styles.sub_title}>
               Texties helps you keep track of your notes. Sign-up today!
             </Typography>
           </Grid>

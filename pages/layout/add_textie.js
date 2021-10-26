@@ -18,19 +18,12 @@ import axios from "axios";
 import { CircularProgress } from "@material-ui/core";
 import CancelIcon from "@material-ui/icons/Cancel";
 import { Grid } from "@material-ui/core";
+import styles from "../../styles/layout/add_textie.module.css";
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const useStyles = makeStyles((theme) => ({
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-    marginTop: 10,
-  },
-}));
-
 export default function AddTextie() {
-  const classes = useStyles();
   const [textie, setTextie] = useState("");
   const [open, setOpen] = React.useState(false);
   const [loading, setLoading] = useState(false);
@@ -75,7 +68,7 @@ export default function AddTextie() {
     <div>
       <IconButton
         aria-label="delete"
-        className={classes.margin}
+        className={styles.margin}
         onClick={handleClickOpen}
       >
         <AddCircleIcon fontSize="large" color="secondary" />
@@ -114,7 +107,7 @@ export default function AddTextie() {
             multiline
             rows={8}
             defaultValue={textie}
-            className={classes.dialog}
+            className={styles.dialog}
             variant="outlined"
             fullWidth
             onChange={(e) => setTextie(e.target.value)}
@@ -131,7 +124,7 @@ export default function AddTextie() {
               <Button
                 variant="contained"
                 color="secondary"
-                className={classes.submit}
+                className={styles.submit}
                 disableElevation
                 onClick={handleSave}
                 style={{ marginRight: "10px" }}
@@ -141,7 +134,7 @@ export default function AddTextie() {
               <br />
               <Typography
                 variant="subtitle1"
-                className={classes.errorText}
+                className={styles.errorText}
                 gutterBottom
               >
                 {errors}

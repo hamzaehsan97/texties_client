@@ -1,0 +1,9 @@
+.dialog {
+  min-width: 100%;
+}
+.title {
+  align-items: right;
+}
+.submit {
+  margin-right: 20vh;
+}

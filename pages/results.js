@@ -4,7 +4,6 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import { InputLabel, Select, MenuItem, Paper } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import axios from "axios";
@@ -23,34 +22,7 @@ import SignOutButton from "./layout/signout_button";
 import TextieContent from "./layout/textie_content";
 import AddTextie from "./layout/add_textie";
 import Router from "next/router";
-
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(5),
-    padding: theme.spacing(1),
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    minWidth: 200,
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: "100%", // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
-    minWidth: 300,
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-    marginTop: 10,
-  },
-  select: { minHeight: 50, fontSize: 1.5 + "em" },
-  textieTitle: {
-    textAlign: "center",
-  },
-}));
+import styles from "../styles/results.module.css";
 
 const returnDate = (date) => {
   var dateObj = new Date(date);
@@ -65,7 +37,6 @@ const columns = [
 ];
 
 export default function Home() {
-  const classes = useStyles();
   const { signOut, user } = useContext(UserContext);
   const [notes, setNotes] = useState([]);
   const [type, setType] = useState("note");
@@ -132,9 +103,9 @@ export default function Home() {
     <Container component="main" maxWidth="xs">
       <Grid container direction="column" justify="center" alignItems="center">
         <CssBaseline />
-        <div className={classes.paper}>
+        <div className={styles.paper}>
           <TextieIcon />
-          <form className={classes.form}>
+          <form className={styles.form}>
             <InputLabel id="type" required={true}>
               Textie Type
             </InputLabel>
@@ -146,7 +117,7 @@ export default function Home() {
               displayEmpty
               onChange={(e) => setType(e.target.value)}
               //   onChange={handleSubmit}
-              className={classes.select}
+              className={styles.select}
             >
               {" "}
               <MenuItem value="" disabled>
@@ -166,7 +137,7 @@ export default function Home() {
                 <Button
                   variant="contained"
                   color="secondary"
-                  className={classes.submit}
+                  className={styles.submit}
                   onClick={handleChange}
                 >
                   Submit
@@ -179,7 +150,7 @@ export default function Home() {
             </Grid>
           </form>
 
-          <Paper className={classes.paper}>
+          <Paper className={styles.paper}>
             <Grid
               container
               direction="row"

@@ -10,6 +10,7 @@ import { useRouter } from "next/router";
 import TextieIcon from "../pages/layout//textie_icon";
 import UserContext from "./UserContext";
 import { CircularProgress } from "@material-ui/core";
+import styles from "../styles/LoginForm.module.css";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -81,12 +82,12 @@ export default function LoginForm() {
     >
       <Grid item>
         <CssBaseline />
-        <div className={classes.paper}>
+        <div className={styles.paper}>
           <TextieIcon />
-          <form className={classes.form}>
+          <form className={styles.form}>
             <TextField
               variant="outlined"
-              className={classes.inputText}
+              className={styles.inputText}
               margin="normal"
               required
               fullWidth
@@ -117,7 +118,7 @@ export default function LoginForm() {
                   fullWidth
                   variant="contained"
                   color="primary"
-                  className={classes.submit}
+                  className={styles.submit}
                   onClick={handleSubmitAuth}
                 >
                   Login
@@ -136,7 +137,7 @@ export default function LoginForm() {
                     fullWidth
                     variant="contained"
                     color="primary"
-                    className={classes.submit}
+                    className={styles.submit}
                     onClick={handleSubmit}
                   >
                     Send Auth Code
@@ -153,7 +154,7 @@ export default function LoginForm() {
             )}
             <Typography
               variant="subtitle1"
-              className={classes.errorText}
+              className={styles.errorText}
               gutterBottom
             >
               {errors}
