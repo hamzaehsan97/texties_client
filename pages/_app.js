@@ -133,6 +133,19 @@ export default class MyApp extends App {
             }}
           />
           <Head>
+            <link rel="stylesheet" href="/static/index.module.css" key="1" />
+            <link
+              rel="stylesheet"
+              href="/static/LoginForm.module.css"
+              key="1"
+            />
+            <link rel="stylesheet" href="/static/results.module.css" key="1" />
+            <link rel="stylesheet" href="/staticsglobals.module.css" key="1" />
+            <link
+              rel="stylesheet"
+              href="/static/layout/textie_icon.module.css"
+              key="1"
+            />
             <title key="title">Texties: Sksksksks</title>
           </Head>
           <NavBar />
