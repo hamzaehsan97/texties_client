@@ -133,14 +133,14 @@ export default class MyApp extends App {
             }}
           />
           <Head>
-            <link rel="stylesheet" href="/static/index.module.css" key="1" />
+            <link rel="stylesheet" href="/static/index.module.css" key="5" />
             <link
               rel="stylesheet"
               href="/static/LoginForm.module.css"
-              key="1"
+              key="4"
             />
-            <link rel="stylesheet" href="/static/results.module.css" key="1" />
-            <link rel="stylesheet" href="/staticsglobals.module.css" key="1" />
+            <link rel="stylesheet" href="/static/results.module.css" key="3" />
+            <link rel="stylesheet" href="/staticsglobals.module.css" key="2" />
             <link
               rel="stylesheet"
               href="/static/layout/textie_icon.module.css"
