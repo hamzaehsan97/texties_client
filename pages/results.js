@@ -86,7 +86,7 @@ export default function Home() {
     }
     axios
       .get(
-        "https://texties.herokuapp.com/get?type=" +
+        "https://texties-test.herokuapp.com/get?type=" +
           type +
           "&phone_number=" +
           user
