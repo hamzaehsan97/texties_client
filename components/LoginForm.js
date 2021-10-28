@@ -4,7 +4,6 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
 import axios from "axios";
 import { useRouter } from "next/router";
 import TextieIcon from "../pages/layout//textie_icon";
@@ -12,40 +11,8 @@ import UserContext from "./UserContext";
 import { CircularProgress } from "@material-ui/core";
 import styles from "../static/LoginForm.module.css";
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(10),
-    padding: theme.spacing(1),
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    width: 100 + "%",
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: "100%", // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
-  },
-  inputText: {
-    width: 100 + "%",
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
-  select: { minHeight: 50, fontSize: 1.5 + "em" },
-  errorText: {
-    textAlign: "center",
-    color: "red",
-    fontWeight: "bolder",
-  },
-}));
-
 export default function LoginForm() {
   const router = useRouter();
-  const classes = useStyles();
   const { signIn, errors } = useContext(UserContext);
   const [loading, setLoading] = useState(false);
   const [auth_code, setAuth_code] = useState("");
@@ -53,15 +20,22 @@ export default function LoginForm() {
   const [phone_number, setPhone_Number] = useState("");
   const [loginErrors, setLoginErrors] = useState([]);
   const handleSubmit = (e) => {
+    if (phone_number.length === 0 || phone_number.length < 10) {
+      setLoginErrors(["Please enter your phone number correctly"]);
+      return;
+    }
     setLoading(true);
     axios
       .post("https://texties.herokuapp.com/auth?phone_number=" + phone_number)
       .then((res) => {
+        setLoginErrors(null);
         setLoading(false);
         setShowAuth(true);
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err.response.data["Error"]);
+        setLoginErrors(err.response.data["Error"]);
+        setLoading(false);
       });
   };
 
@@ -99,6 +73,13 @@ export default function LoginForm() {
               autoComplete="phone_number"
               onChange={(e) => setPhone_Number(e.target.value)}
             />
+            <Typography
+              variant="subtitle1"
+              className={styles.errorText}
+              gutterBottom
+            >
+              {loginErrors}
+            </Typography>
             {showAuth ? (
               <div>
                 <TextField
