@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import UserContext from "../components/UserContext";
 import Image from "next/image";
 import styles from "../styles/index.module.css";
-import { Button, TextField } from "@material-ui/core";
+import { Button, CircularProgress, TextField } from "@material-ui/core";
 import { LinearProgress } from "@material-ui/core";
 import axios from "axios";
 
@@ -84,25 +84,27 @@ export default function Home() {
                   <Button
                     variant="contained"
                     onClick={handleSubmit}
+                    disabled={loading}
                     className={styles.access_button}
+                    loading={loading}
                   >
                     Get Access
                   </Button>
                 </Grid>
-                <Grid item>
-                  {loading ? <LinearProgress /> : null}
-                  {signupErrors ? (
-                    <Typography
-                      variant="subtitle1"
-                      className={styles.errorText}
-                      gutterBottom
-                    >
-                      {signupErrors}
-                    </Typography>
-                  ) : null}
-                </Grid>
               </Grid>
             </form>
+          </Grid>
+          <Grid item>
+            {loading ? <CircularProgress /> : null}
+            {signupErrors ? (
+              <Typography
+                variant="subtitle1"
+                className={styles.errorText}
+                gutterBottom
+              >
+                {signupErrors}
+              </Typography>
+            ) : null}
           </Grid>
         </Grid>
       </Grid>
