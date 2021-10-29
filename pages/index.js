@@ -7,6 +7,8 @@ import Image from "next/image";
 import styles from "../styles/index.module.css";
 import { Button, TextField } from "@material-ui/core";
 import { LinearProgress } from "@material-ui/core";
+import axios from "axios";
+
 export default function Home() {
   const [phone_number, setPhone_Number] = useState("");
   const [signupErrors, setSignupErrors] = useState([]);
