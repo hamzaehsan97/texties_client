@@ -39,7 +39,7 @@ export default function Home() {
       spacing={0}
       justifyContent="center"
       alignItems="center"
-      style={{ paddingTop: "10vh" }}
+      style={{ paddingTop: "5vh" }}
     >
       <Grid item ls={1} xs={1}></Grid>
       <Grid item lg={5} xs={12} style={{ paddingBottom: "20px" }}>
