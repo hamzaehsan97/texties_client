@@ -37,19 +37,12 @@ export default function Home() {
       container
       direction="row"
       spacing={0}
-      justifyContent="center"
       alignItems="center"
       style={{ paddingTop: "5vh" }}
     >
       <Grid item ls={1} xs={1}></Grid>
       <Grid item lg={5} xs={12} style={{ paddingBottom: "20px" }}>
-        <Grid
-          container
-          direction="column"
-          justifyContent="center"
-          alignItems="center"
-          spacing={5}
-        >
+        <Grid container direction="column" alignItems="center" spacing={5}>
           <Grid item>
             <Typography variant="h2" className={styles.title}>
               <b>Reimagining notes 📓</b>
@@ -109,12 +102,7 @@ export default function Home() {
         </Grid>
       </Grid>
       <Grid item lg={6} xs={12}>
-        <Grid
-          container
-          direction="column"
-          justifyContent="center"
-          alignItems="center"
-        >
+        <Grid container direction="column" alignItems="center">
           <Grid item>
             <Image
               src="/visual-guide.gif"

@@ -48,12 +48,7 @@ export default function LoginForm() {
   };
 
   return (
-    <Grid
-      container
-      direction="column"
-      justifyContent="center"
-      alignItems="center"
-    >
+    <Grid container direction="column" alignItems="center">
       <Grid item>
         <CssBaseline />
         <div className={styles.paper}>

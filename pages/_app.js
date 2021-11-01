@@ -2,7 +2,7 @@ import React from "react";
 import App from "next/app";
 import Router from "next/router";
 import UserContext from "../components/UserContext";
-import { createGlobalStyle, ThemeProvider } from "styled-components";
+// import { createGlobalStyle, ThemeProvider } from "styled-components";
 import axios from "axios";
 import Head from "next/head";
 import * as gtag from "../lib/gtag";
@@ -10,14 +10,14 @@ import Script from "next/script";
 import Box from "@material-ui/core/Box";
 import Copyright from "./layout/copyright";
 import NavBar from "./layout/navbar";
-
-const GlobalStyle = createGlobalStyle`
-  body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-`;
+import "../styles/globals.css";
+// const GlobalStyle = createGlobalStyle`
+//   body {
+//     margin: 0;
+//     padding: 0;
+//     box-sizing: border-box;
+//   }
+// `;
 
 const theme = {
   colors: {
@@ -111,18 +111,18 @@ export default class MyApp extends App {
           signOut: this.signOut,
         }}
       >
-        <GlobalStyle />
-        <ThemeProvider theme={theme}>
-          {/* Global Site Tag (gtag.js) - Google Analytics */}
-          <Script
-            strategy="afterInteractive"
-            src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
-          />
-          <Script
-            id="gtag-init"
-            strategy="afterInteractive"
-            dangerouslySetInnerHTML={{
-              __html: `
+        {/* <GlobalStyle /> */}
+        {/* <ThemeProvider theme={theme}> */}
+        {/* Global Site Tag (gtag.js) - Google Analytics */}
+        <Script
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
+        />
+        <Script
+          id="gtag-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
@@ -130,30 +130,26 @@ export default class MyApp extends App {
               page_path: window.location.pathname,
             });
           `,
-            }}
+          }}
+        />
+        <Head>
+          <link rel="stylesheet" href="/static/index.module.css" key="5" />
+          <link rel="stylesheet" href="/static/LoginForm.module.css" key="4" />
+          <link rel="stylesheet" href="/static/results.module.css" key="3" />
+          <link rel="stylesheet" href="/staticsglobals.module.css" key="2" />
+          <link
+            rel="stylesheet"
+            href="/static/layout/textie_icon.module.css"
+            key="1"
           />
-          <Head>
-            <link rel="stylesheet" href="/static/index.module.css" key="5" />
-            <link
-              rel="stylesheet"
-              href="/static/LoginForm.module.css"
-              key="4"
-            />
-            <link rel="stylesheet" href="/static/results.module.css" key="3" />
-            <link rel="stylesheet" href="/staticsglobals.module.css" key="2" />
-            <link
-              rel="stylesheet"
-              href="/static/layout/textie_icon.module.css"
-              key="1"
-            />
-            <title key="title">Texties: Sksksksks</title>
-          </Head>
-          <NavBar />
-          <Component {...pageProps} />
-          <Box mt={8}>
-            <Copyright />
-          </Box>
-        </ThemeProvider>
+          <title key="title">Texties: Sksksksks</title>
+        </Head>
+        <NavBar />
+        <Component {...pageProps} />
+        <Box mt={8}>
+          <Copyright />
+        </Box>
+        {/* </ThemeProvider> */}
       </UserContext.Provider>
     );
   }
