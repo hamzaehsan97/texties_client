@@ -2,7 +2,6 @@ import React from "react";
 import App from "next/app";
 import Router from "next/router";
 import UserContext from "../components/UserContext";
-// import { createGlobalStyle, ThemeProvider } from "styled-components";
 import axios from "axios";
 import Head from "next/head";
 import * as gtag from "../lib/gtag";
@@ -10,14 +9,7 @@ import Script from "next/script";
 import Box from "@material-ui/core/Box";
 import Copyright from "./layout/copyright";
 import NavBar from "./layout/navbar";
-import "../styles/globals.css";
-// const GlobalStyle = createGlobalStyle`
-//   body {
-//     margin: 0;
-//     padding: 0;
-//     box-sizing: border-box;
-//   }
-// `;
+import "../static/globals.css";
 
 const theme = {
   colors: {
@@ -111,9 +103,6 @@ export default class MyApp extends App {
           signOut: this.signOut,
         }}
       >
-        {/* <GlobalStyle /> */}
-        {/* <ThemeProvider theme={theme}> */}
-        {/* Global Site Tag (gtag.js) - Google Analytics */}
         <Script
           strategy="afterInteractive"
           src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
@@ -133,13 +122,13 @@ export default class MyApp extends App {
           }}
         />
         <Head>
-          <link rel="stylesheet" href="/static/index.module.css" key="5" />
-          <link rel="stylesheet" href="/static/LoginForm.module.css" key="4" />
-          <link rel="stylesheet" href="/static/results.module.css" key="3" />
+          <link rel="stylesheet" href="/styles/index.module.css" key="5" />
+          <link rel="stylesheet" href="/styles/LoginForm.module.css" key="4" />
+          <link rel="stylesheet" href="/styles/results.module.css" key="3" />
           <link rel="stylesheet" href="/staticsglobals.module.css" key="2" />
           <link
             rel="stylesheet"
-            href="/static/layout/textie_icon.module.css"
+            href="/styles/layout/textie_icon.module.css"
             key="1"
           />
           <title key="title">Texties: Sksksksks</title>
@@ -149,7 +138,6 @@ export default class MyApp extends App {
         <Box mt={8}>
           <Copyright />
         </Box>
-        {/* </ThemeProvider> */}
       </UserContext.Provider>
     );
   }

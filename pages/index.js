@@ -4,7 +4,7 @@ import Typography from "@material-ui/core/Typography";
 import { useRouter } from "next/router";
 import UserContext from "../components/UserContext";
 import Image from "next/image";
-import styles from "../styles/index.module.css";
+import styles from "../static/index.module.css";
 import { Button, CircularProgress, TextField } from "@material-ui/core";
 import { LinearProgress } from "@material-ui/core";
 import axios from "axios";
@@ -79,7 +79,6 @@ export default function Home() {
                     onClick={handleSubmit}
                     disabled={loading}
                     className={styles.access_button}
-                    loading={loading}
                   >
                     Get Access
                   </Button>

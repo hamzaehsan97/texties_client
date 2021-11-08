@@ -1,14 +1,32 @@
 .title {
   font-size: 4em;
   font-weight: bolder;
-  margin: 20vh 0vh 1vh;
+  margin: 5vh 0vh 1vh;
   text-align: center;
 }
-
 .sub_title {
   font-size: 1em;
   margin: 20vh 0 10vh;
   text-align: center;
+}
+.form {
+  border: 1px solid #e7e5e5;
+  border-radius: 5px;
+  background-image: linear-gradient(to bottom right, #f9f9f9, #ffeded);
+  padding: 3px;
+  width: 100%;
+}
+.errorText {
+  text-align: center;
+  color: red;
+  font-weight: bolder;
+}
+.access_button {
+  height: 55px;
+  width: 100%;
+  background-image: linear-gradient(to bottom right, #f7c4a5, #eb7e7e);
+  color: #fff !important;
+  font-size: 1.1em !important;
 }
 @media (max-width: 900px) {
   .title {
@@ -16,5 +34,8 @@
   }
   .sub_title {
     font-size: 1em;
+  }
+  .form {
+    margin-left: 5px !important;
   }
 }
