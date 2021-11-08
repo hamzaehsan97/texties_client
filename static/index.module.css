@@ -21,7 +21,8 @@
   color: red;
   font-weight: bolder;
 }
-.jss2 MuiOutlinedInput-notchedOutline {
+.jss2,
+.MuiOutlinedInput-notchedOutline {
   display: none;
 }
 .access_button {
