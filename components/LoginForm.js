@@ -33,7 +33,6 @@ export default function LoginForm() {
         setShowAuth(true);
       })
       .catch((err) => {
-        console.log(err.response.data["Error"]);
         setLoginErrors(err.response.data["Error"]);
         setLoading(false);
       });

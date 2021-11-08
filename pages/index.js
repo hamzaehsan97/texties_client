@@ -63,12 +63,12 @@ export default function Home() {
               >
                 <Grid item>
                   <TextField
-                    variant="outlined"
                     value={phone_number}
                     name="phone_number"
                     label="Phone Number"
                     type="phone_number"
                     id="phone_number"
+                    className={styles.phone_field}
                     onChange={(e) => setPhone_Number(e.target.value)}
                     style={{ maxHeight: 55 + "px", background: "#fff" }}
                   />
