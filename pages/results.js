@@ -100,119 +100,123 @@ export default function Home() {
       });
   }, []);
   return (
-    <Container component="main" maxWidth="xs">
-      <Grid container direction="column" justify="center" alignItems="center">
-        <CssBaseline />
-        <div className={styles.paper}>
-          <TextieIcon />
-          <form className={styles.form}>
-            <InputLabel id="type" required={true}>
-              Textie Type
-            </InputLabel>
-            <Select
-              fullWidth
-              label="Textie Type"
-              id="type"
-              value={type}
-              displayEmpty
-              onChange={(e) => setType(e.target.value)}
-              //   onChange={handleSubmit}
-              className={styles.select}
-            >
-              {" "}
-              <MenuItem value="" disabled>
-                Type
-              </MenuItem>
-              <MenuItem value={"note"}>Notes</MenuItem>
-              <MenuItem value={"idea"}>Ideas</MenuItem>
-              <MenuItem value={"weight"}>Weight</MenuItem>
-            </Select>
-            <Grid
-              container
-              direction="row"
-              justify="space-between"
-              alignItems="center"
-            >
-              <Grid item>
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  className={styles.submit}
-                  onClick={handleChange}
-                >
-                  Submit
-                </Button>
-              </Grid>
+    // <Container component="main" maxWidth="xs">
+    <Grid container direction="row" justify="center" alignItems="center">
+      <Grid item xs={12} md={6}>
+        <Grid container direction="column" justify="center" alignItems="center">
+          <CssBaseline />
+          <div className={styles.paper}>
+            <TextieIcon />
+            <form className={styles.form}>
+              <InputLabel id="type" required={true}>
+                Textie Type
+              </InputLabel>
+              <Select
+                fullWidth
+                label="Textie Type"
+                id="type"
+                value={type}
+                displayEmpty
+                onChange={(e) => setType(e.target.value)}
+                //   onChange={handleSubmit}
+                className={styles.select}
+              >
+                {" "}
+                <MenuItem value="" disabled>
+                  Type
+                </MenuItem>
+                <MenuItem value={"note"}>Notes</MenuItem>
+                <MenuItem value={"idea"}>Ideas</MenuItem>
+                <MenuItem value={"weight"}>Weight</MenuItem>
+              </Select>
+              <Grid
+                container
+                direction="row"
+                justify="space-between"
+                alignItems="center"
+              >
+                <Grid item>
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    className={styles.submit}
+                    onClick={handleChange}
+                  >
+                    Submit
+                  </Button>
+                </Grid>
 
-              <Grid item style={{ marginLeft: "-10px" }}>
-                <AddTextie />
+                <Grid item style={{ marginLeft: "-10px" }}>
+                  <AddTextie />
+                </Grid>
               </Grid>
-            </Grid>
-          </form>
+            </form>
 
-          <Paper className={styles.paper}>
-            <Grid
-              container
-              direction="row"
-              justify="flex-start"
-              alignItems="center"
-            >
-              <Grid item xs={12}>
-                <TextField
-                  fullWidth
-                  id="outlined-basic"
-                  label="Search Texties"
-                  variant="outlined"
-                  value={searchText}
-                  onChange={(e) => handleSearchChange(e.target.value)}
-                  style={{ paddingTop: "5px", paddingBottom: "10px" }}
-                />
+            <Paper className={styles.paper}>
+              <Grid
+                container
+                direction="row"
+                justify="flex-start"
+                alignItems="center"
+              >
+                <Grid item xs={12}>
+                  <TextField
+                    fullWidth
+                    id="outlined-basic"
+                    label="Search Texties"
+                    variant="outlined"
+                    value={searchText}
+                    onChange={(e) => handleSearchChange(e.target.value)}
+                    style={{ paddingTop: "5px", paddingBottom: "10px" }}
+                  />
+                </Grid>
               </Grid>
-            </Grid>
-            {loading ? (
-              <div>
-                <CircularProgress color="secondary" />
-              </div>
-            ) : (
-              <div>
-                <TableContainer>
-                  <Table stickyHeader>
-                    <TableHead>
-                      <TableRow>
-                        {columns.map((column) => (
-                          <TableCell
-                            key={column.id}
-                            align={column.align}
-                            style={{
-                              minWidth: column.minWidth,
-                              fontWeight: "bold",
-                            }}
-                          >
-                            {column.label}
-                          </TableCell>
-                        ))}
-                      </TableRow>
-                    </TableHead>
-                    <TableBody>
-                      {notes
-                        .slice(0)
-                        .reverse()
-                        .map((note) => (
-                          <TextieContent
-                            textie={note.textie}
-                            date={returnDate(note.created_date)}
-                            id={note.id}
-                          />
-                        ))}
-                    </TableBody>
-                  </Table>
-                </TableContainer>
-              </div>
-            )}
-          </Paper>
-          <SignOutButton />
-        </div>
+              {loading ? (
+                <div>
+                  <CircularProgress color="secondary" />
+                </div>
+              ) : (
+                <div>
+                  <TableContainer>
+                    <Table stickyHeader>
+                      <TableHead>
+                        <TableRow>
+                          {columns.map((column) => (
+                            <TableCell
+                              key={column.id}
+                              align={column.align}
+                              style={{
+                                minWidth: column.minWidth,
+                                fontWeight: "bold",
+                              }}
+                            >
+                              {column.label}
+                            </TableCell>
+                          ))}
+                        </TableRow>
+                      </TableHead>
+                      <TableBody>
+                        {notes
+                          .slice(0)
+                          .reverse()
+                          .map((note) => (
+                            <TextieContent
+                              textie={note.textie}
+                              date={returnDate(note.created_date)}
+                              id={note.id}
+                            />
+                          ))}
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
+                </div>
+              )}
+            </Paper>
+            <SignOutButton />
+          </div>
+        </Grid>
       </Grid>
-    </Container>
+    </Grid>
+    // </Container>
   );
 }
