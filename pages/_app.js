@@ -9,7 +9,7 @@ import Script from "next/script";
 import Box from "@material-ui/core/Box";
 import Copyright from "./layout/copyright";
 import NavBar from "./layout/navbar";
-import "../static/globals.css";
+import "../public/static/globals.css";
 import NProgress from "nprogress";
 
 NProgress.configure({ easing: "ease", speed: 500 });
@@ -140,15 +140,31 @@ export default class MyApp extends App {
           }}
         />
         <Head>
-          <script src="/static/js/nprogress.js"></script>
-          <link rel="stylesheet" href="/static/nprogress.css" />
-          <link rel="stylesheet" href="/styles/index.module.css" key="5" />
-          <link rel="stylesheet" href="/styles/LoginForm.module.css" key="4" />
-          <link rel="stylesheet" href="/styles/results.module.css" key="3" />
-          <link rel="stylesheet" href="/statics/globals.module.css" key="2" />
+          <script src="public/static/js/nprogress.js"></script>
+          <link rel="stylesheet" href="public/static/nprogress.css" />
           <link
             rel="stylesheet"
-            href="/styles/layout/textie_icon.module.css"
+            href="public/static/index.module.css"
+            key="5"
+          />
+          <link
+            rel="stylesheet"
+            href="public/static/LoginForm.module.css"
+            key="4"
+          />
+          <link
+            rel="stylesheet"
+            href="public/static/results.module.css"
+            key="3"
+          />
+          <link
+            rel="stylesheet"
+            href="public/static/globals.module.css"
+            key="2"
+          />
+          <link
+            rel="stylesheet"
+            href="public/static/layout/textie_icon.module.css"
             key="1"
           />
           <title key="title">Texties: Sksksksks</title>

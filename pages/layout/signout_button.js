@@ -8,7 +8,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import Slide from "@material-ui/core/Slide";
 import { useContext } from "react";
 import UserContext from "../../components/UserContext";
-import styles from "../../static/layout/signout_button.module.css";
+import styles from "../../public/static/layout/signout_button.module.css";
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });

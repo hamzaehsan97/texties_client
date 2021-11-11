@@ -6,7 +6,7 @@ import { Typography } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 import { Grid } from "@material-ui/core";
 import SignOutButton from "./signout_button";
-import styles from "../../static/layout/navbar.module.css";
+import styles from "../../public/static/layout/navbar.module.css";
 
 export default function NavBar() {
   const { user } = useContext(UserContext);

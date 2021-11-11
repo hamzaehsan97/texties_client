@@ -22,7 +22,7 @@ import SignOutButton from "./layout/signout_button";
 import TextieContent from "./layout/textie_content";
 import AddTextie from "./layout/add_textie";
 import Router from "next/router";
-import styles from "../static/results.module.css";
+import styles from "../public/static/results.module.css";
 
 const returnDate = (date) => {
   var dateObj = new Date(date);

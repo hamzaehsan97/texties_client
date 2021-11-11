@@ -4,7 +4,7 @@ import Typography from "@material-ui/core/Typography";
 import Router from "next/router";
 import UserContext from "../components/UserContext";
 import Image from "next/image";
-import styles from "../static/index.module.css";
+import styles from "../public/static/index.module.css";
 import { Button, CircularProgress, TextField } from "@material-ui/core";
 import { LinearProgress } from "@material-ui/core";
 import axios from "axios";

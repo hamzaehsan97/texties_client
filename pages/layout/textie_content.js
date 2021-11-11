@@ -18,7 +18,7 @@ import Snackbar from "@material-ui/core/Snackbar";
 import CloseIcon from "@material-ui/icons/Close";
 import { Grid } from "@material-ui/core";
 import CancelIcon from "@material-ui/icons/Cancel";
-import styles from "../../static/layout/textie_content.module.css";
+import styles from "../../public/static/layout/textie_content.module.css";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
