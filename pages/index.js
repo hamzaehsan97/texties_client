@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import { useRouter } from "next/router";
+import Router from "next/router";
 import UserContext from "../components/UserContext";
 import Image from "next/image";
 import styles from "../static/index.module.css";
@@ -10,6 +10,7 @@ import { LinearProgress } from "@material-ui/core";
 import axios from "axios";
 
 export default function Home() {
+  const { signOut, user } = useContext(UserContext);
   const [phone_number, setPhone_Number] = useState("");
   const [signupErrors, setSignupErrors] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -31,7 +32,13 @@ export default function Home() {
         setLoading(false);
       });
   };
-
+  useEffect(() => {
+    if (user === null) {
+      Router.push("/");
+    } else {
+      Router.push("/results");
+    }
+  }, []);
   return (
     <Grid
       container

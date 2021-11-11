@@ -3,4 +3,5 @@ module.exports = {
   images: {
     domains: ["https://www.github.com/"],
   },
+  trailingSlash: false,
 };
