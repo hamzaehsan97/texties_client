@@ -9,6 +9,7 @@ import { TextField } from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
 import axios from "axios";
+import Router from "next/router";
 import React from "react";
 import { useState } from "react";
 import { Typography } from "@material-ui/core";
@@ -56,6 +57,7 @@ export default function TextieContent(props) {
       .get("https://texties.herokuapp.com/delete?id=" + props.id)
       .then((res) => {
         setLoading(false);
+        Router.reload(window.location.pathname);
         setOpen(false);
       })
       .catch((err) => {
@@ -77,6 +79,7 @@ export default function TextieContent(props) {
       )
       .then((res) => {
         setLoading(false);
+        Router.reload(window.location.pathname);
         setOpen(false);
       })
       .catch((err) => {

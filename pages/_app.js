@@ -10,6 +10,24 @@ import Box from "@material-ui/core/Box";
 import Copyright from "./layout/copyright";
 import NavBar from "./layout/navbar";
 import "../static/globals.css";
+import NProgress from "nprogress";
+
+NProgress.configure({ easing: "ease", speed: 500 });
+
+Router.onRouteChangeStart = () => {
+  // console.log('onRouteChangeStart triggered');
+  NProgress.start();
+};
+
+Router.onRouteChangeComplete = () => {
+  // console.log('onRouteChangeComplete triggered');
+  NProgress.done();
+};
+
+Router.onRouteChangeError = () => {
+  // console.log('onRouteChangeError triggered');
+  NProgress.done();
+};
 
 const theme = {
   colors: {
@@ -122,10 +140,12 @@ export default class MyApp extends App {
           }}
         />
         <Head>
+          <script src="/static/js/nprogress.js"></script>
+          <link rel="stylesheet" href="/static/nprogress.css" />
           <link rel="stylesheet" href="/styles/index.module.css" key="5" />
           <link rel="stylesheet" href="/styles/LoginForm.module.css" key="4" />
           <link rel="stylesheet" href="/styles/results.module.css" key="3" />
-          <link rel="stylesheet" href="/staticsglobals.module.css" key="2" />
+          <link rel="stylesheet" href="/statics/globals.module.css" key="2" />
           <link
             rel="stylesheet"
             href="/styles/layout/textie_icon.module.css"

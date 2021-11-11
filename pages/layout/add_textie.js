@@ -18,6 +18,7 @@ import axios from "axios";
 import { CircularProgress } from "@material-ui/core";
 import CancelIcon from "@material-ui/icons/Cancel";
 import { Grid } from "@material-ui/core";
+import Router from "next/router";
 import styles from "../../static/layout/add_textie.module.css";
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -54,6 +55,7 @@ export default function AddTextie() {
       )
       .then((res) => {
         setLoading(false);
+        Router.reload(window.location.pathname);
         setOpen(false);
       })
       .catch((err) => {
