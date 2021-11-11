@@ -140,31 +140,15 @@ export default class MyApp extends App {
           }}
         />
         <Head>
-          <script src="public/static/js/nprogress.js"></script>
-          <link rel="stylesheet" href="public/static/nprogress.css" />
+          <script src="/static/js/nprogress.js"></script>
+          <link rel="stylesheet" href="/static/nprogress.css" />
+          <link rel="stylesheet" href="/static/index.module.css" key="5" />
+          <link rel="stylesheet" href="/static/LoginForm.module.css" key="4" />
+          <link rel="stylesheet" href="/static/results.module.css" key="3" />
+          <link rel="stylesheet" href="/static/globals.css" key="2" />
           <link
             rel="stylesheet"
-            href="public/static/index.module.css"
-            key="5"
-          />
-          <link
-            rel="stylesheet"
-            href="public/static/LoginForm.module.css"
-            key="4"
-          />
-          <link
-            rel="stylesheet"
-            href="public/static/results.module.css"
-            key="3"
-          />
-          <link
-            rel="stylesheet"
-            href="public/static/globals.module.css"
-            key="2"
-          />
-          <link
-            rel="stylesheet"
-            href="public/static/layout/textie_icon.module.css"
+            href="/static/layout/textie_icon.module.css"
             key="1"
           />
           <title key="title">Texties: Sksksksks</title>

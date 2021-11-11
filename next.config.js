@@ -4,4 +4,5 @@ module.exports = {
     domains: ["https://www.github.com/"],
   },
   trailingSlash: false,
+  generateBuildId: () => "build",
 };

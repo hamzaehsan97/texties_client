@@ -17,7 +17,6 @@ export default function NavBar() {
     } else {
       setIsUser(false);
     }
-    console.log("user from Nav", user);
   }, [user]);
 
   return (
