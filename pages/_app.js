@@ -151,7 +151,13 @@ export default class MyApp extends App {
             href="/static/layout/textie_icon.module.css"
             key="1"
           />
-          <title key="title">Texties: Sksksksks</title>
+          <title key="title">Notes - Texties</title>
+          <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta
+            name="description"
+            content="Making notes harder, because why not?"
+          />
         </Head>
         <NavBar />
         <Component {...pageProps} />
