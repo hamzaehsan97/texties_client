@@ -8,7 +8,6 @@ import styles from "../public/static/index.module.css";
 import { Button, CircularProgress, TextField } from "@material-ui/core";
 import { LinearProgress } from "@material-ui/core";
 import axios from "axios";
-
 export default function Home() {
   const { signOut, user } = useContext(UserContext);
   const [phone_number, setPhone_Number] = useState("");
