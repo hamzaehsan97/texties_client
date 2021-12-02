@@ -9,6 +9,8 @@ import Slide from "@material-ui/core/Slide";
 import { useContext } from "react";
 import UserContext from "../../components/UserContext";
 import styles from "../../public/static/layout/signout_button.module.css";
+import { Typography } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -43,24 +45,31 @@ export default function SignOutButton() {
         aria-labelledby="alert-dialog-slide-title"
         aria-describedby="alert-dialog-slide-description"
       >
-        <DialogTitle id="alert-dialog-slide-title">
-          {"Are you sure you want to sign out?"}
-        </DialogTitle>
-
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            Disagree
-          </Button>
-          <Button
-            variant="contained"
-            color="secondary"
-            className={styles.submit}
-            onClick={signOut}
-            disableElevation
-          >
-            Sign out
-          </Button>
-        </DialogActions>
+        <Grid container direction="column" justify="center" alignItems="center">
+          <Grid item>
+            <DialogTitle id="alert-dialog-slide-title">
+              <Typography variant="subtitle1">
+                Are you sure you want to sign out?
+              </Typography>
+            </DialogTitle>
+          </Grid>
+          <Grid item>
+            <DialogActions>
+              <Button onClick={handleClose} color="primary" variant="outlined">
+                Cancel
+              </Button>
+              <Button
+                variant="outlined"
+                color="secondary"
+                className={styles.submit}
+                onClick={signOut}
+                disableElevation
+              >
+                Sign out
+              </Button>
+            </DialogActions>
+          </Grid>
+        </Grid>
       </Dialog>
     </div>
   );

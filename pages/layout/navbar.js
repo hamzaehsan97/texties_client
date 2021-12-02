@@ -20,7 +20,12 @@ export default function NavBar() {
   }, [user]);
 
   return (
-    <AppBar position="static" color="transparent" elevation={0}>
+    <AppBar
+      position="static"
+      color="transparent"
+      elevation={0}
+      className={styles.app_bar}
+    >
       <Toolbar>
         <Grid
           container

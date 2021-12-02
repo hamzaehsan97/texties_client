@@ -80,6 +80,7 @@ export default function Home() {
         console.log(err);
       });
   };
+
   useEffect(() => {
     if (user === null) {
       Router.push("/");
@@ -212,8 +213,10 @@ export default function Home() {
                 </div>
               )}
             </Paper>
+          </div>{" "}
+          <Grid item>
             <SignOutButton />
-          </div>
+          </Grid>
         </Grid>
       </Grid>
     </Grid>

@@ -33,7 +33,7 @@ export default function Home() {
   };
   useEffect(() => {
     if (user === null) {
-      Router.push("/");
+      // Router.push("/");
     } else {
       Router.push("/results");
     }
