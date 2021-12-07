@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 20vh;
+  min-width: 0;
 }
 .avatar {
   margin: 1vh;
@@ -27,8 +27,12 @@
   text-align: center;
 }
 @media (max-width: 900px) {
+  .MuiTableRow-root,
+  .MuiTableRow-head {
+    max-width: 100%;
+  }
   .paper {
-    min-width: 100%;
+    max-width: 100%;
     margin-left: 0;
     margin-right: 0;
     padding-right: 1vh;
