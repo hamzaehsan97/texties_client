@@ -31,17 +31,16 @@ const returnDate = (date) => {
   return listDate[0] + " " + listDate[1] + " " + listDate[2];
 };
 
-const columns = [
-  { id: "textie", label: "Textie" },
-  { id: "date", label: "Date", minWidth: 105 },
-];
-
 export default function Home() {
   const { signOut, user } = useContext(UserContext);
   const [notes, setNotes] = useState([]);
   const [type, setType] = useState("note");
   const [loading, setLoading] = useState(true);
   const [searchText, setSeachText] = useState("");
+  const columns = [
+    { id: "textie", label: type },
+    { id: "date", label: "Date", minWidth: 105 },
+  ];
   const handleChange = (e) => {
     setType(e.target.value);
     setLoading(true);
@@ -103,7 +102,13 @@ export default function Home() {
   }, []);
   return (
     // <Container component="main" maxWidth="xs">
-    <Grid container direction="row" justify="center" alignItems="center">
+    <Grid
+      container
+      direction="row"
+      justify="center"
+      alignItems="center"
+      style={{ flex: 1 }}
+    >
       <Grid item xs={12} md={6}>
         <Grid container direction="column" justify="center" alignItems="center">
           <CssBaseline />
@@ -151,7 +156,7 @@ export default function Home() {
               </Grid>
             </form>
 
-            <Paper className={styles.paper}>
+            <Paper className={styles.data_table}>
               <Grid
                 container
                 direction="row"

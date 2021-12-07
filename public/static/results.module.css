@@ -4,7 +4,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 0;
+  /* min-width: 20vh; */
+  display: inline-block; /* shrink to fit */
+  width: 100%; /* whatever width you like */
+  position: relative;
 }
 .avatar {
   margin: 1vh;
@@ -27,14 +30,14 @@
   text-align: center;
 }
 @media (max-width: 900px) {
-  .MuiTableRow-root,
-  .MuiTableRow-head {
-    max-width: 100%;
-  }
   .paper {
-    max-width: 100%;
+    min-width: 100%;
     margin-left: 0;
     margin-right: 0;
+    padding-right: 1vh;
+    padding-left: 1vh;
+  }
+  .data_table {
     padding-right: 1vh;
     padding-left: 1vh;
   }
