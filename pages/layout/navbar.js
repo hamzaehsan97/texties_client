@@ -7,9 +7,10 @@ import { Button } from "@material-ui/core";
 import { Grid } from "@material-ui/core";
 import SignOutButton from "./signout_button";
 import styles from "../../public/static/layout/navbar.module.css";
+import Switch from "@material-ui/core/Switch";
 
 export default function NavBar() {
-  const { user } = useContext(UserContext);
+  const { user, toggleDarkMode } = useContext(UserContext);
   const [isUser, setIsUser] = useState(false);
   useEffect(() => {
     if (user !== null) {
@@ -41,15 +42,23 @@ export default function NavBar() {
             </Typography>
           </Grid>
           <Grid item>
-            {isUser ? (
-              <div className={styles.signout_button}>
-                <SignOutButton />
-              </div>
-            ) : (
-              <Button color="inherit" style={{ margin: "5px" }} href="/login">
-                Login
-              </Button>
-            )}
+            <div
+              style={{
+                display: "flex",
+                direction: "row",
+              }}
+            >
+              <Switch defaultChecked onChange={toggleDarkMode} />
+              {isUser ? (
+                <div className={styles.signout_button}>
+                  <SignOutButton />
+                </div>
+              ) : (
+                <Button color="inherit" style={{ margin: "5px" }} href="/login">
+                  Login
+                </Button>
+              )}
+            </div>
           </Grid>
         </Grid>
       </Toolbar>

@@ -43,11 +43,12 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [searchText, setSeachText] = useState("");
   const handleChange = (e) => {
+    setType(e.target.value);
     setLoading(true);
     axios
       .get(
         "https://texties-test.herokuapp.com/get?type=" +
-          type +
+          e.target.value +
           "&phone_number=" +
           user
       )
@@ -109,16 +110,13 @@ export default function Home() {
           <div className={styles.paper}>
             <TextieIcon />
             <form className={styles.form}>
-              <InputLabel id="type" required={true}>
-                Textie Type
-              </InputLabel>
               <Select
                 fullWidth
                 label="Textie Type"
                 id="type"
                 value={type}
                 displayEmpty
-                onChange={(e) => setType(e.target.value)}
+                onChange={(e) => handleChange(e)}
                 //   onChange={handleSubmit}
                 className={styles.select}
               >

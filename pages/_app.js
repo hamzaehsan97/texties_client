@@ -40,8 +40,8 @@ export default class MyApp extends App {
     user: null,
     token: null,
     errors: null,
+    darkMode: false,
   };
-
   componentDidMount = () => {
     const user = localStorage.getItem("user");
     const token = localStorage.getItem("token");
@@ -53,6 +53,20 @@ export default class MyApp extends App {
       });
       Router.push("/results");
     }
+  };
+
+  //Toggles dark mode
+  toggleDarkMode = () => {
+    if (this.state.darkMode === true) {
+      this.setState({
+        darkMode: false,
+      });
+    } else {
+      this.setState({
+        darkMode: true,
+      });
+    }
+    localStorage.setItem("darkMode", this.state.darkMode);
   };
 
   signIn = (phone_number, auth_code) => {
@@ -110,7 +124,7 @@ export default class MyApp extends App {
 
   render() {
     const { Component, pageProps } = this.props;
-
+    let darkToggle = this.state.darkMode === true ? "lightBody" : "darkBody";
     return (
       <UserContext.Provider
         value={{
@@ -119,6 +133,7 @@ export default class MyApp extends App {
           errors: this.state.errors,
           signIn: this.signIn,
           signOut: this.signOut,
+          toggleDarkMode: this.toggleDarkMode,
         }}
       >
         <Script
@@ -175,11 +190,13 @@ export default class MyApp extends App {
             content="Making notes harder, because why not?"
           />
         </Head>
-        <NavBar />
-        <Component {...pageProps} />
-        <Box mt={8}>
-          <Copyright />
-        </Box>
+        <div className={darkToggle}>
+          <NavBar />
+          <Component {...pageProps} />
+          <Box mt={8}>
+            <Copyright />
+          </Box>
+        </div>
       </UserContext.Provider>
     );
   }

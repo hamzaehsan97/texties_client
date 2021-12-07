@@ -30,7 +30,7 @@ export default function SignOutButton() {
   return (
     <div>
       <Button
-        variant="outlined"
+        variant="contained"
         color="secondary"
         className={styles.submit}
         onClick={handleClickOpen}
