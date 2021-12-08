@@ -15,17 +15,14 @@ import NProgress from "nprogress";
 NProgress.configure({ easing: "ease", speed: 500 });
 
 Router.onRouteChangeStart = () => {
-  // console.log('onRouteChangeStart triggered');
   NProgress.start();
 };
 
 Router.onRouteChangeComplete = () => {
-  // console.log('onRouteChangeComplete triggered');
   NProgress.done();
 };
 
 Router.onRouteChangeError = () => {
-  // console.log('onRouteChangeError triggered');
   NProgress.done();
 };
 
@@ -45,6 +42,15 @@ export default class MyApp extends App {
   componentDidMount = () => {
     const user = localStorage.getItem("user");
     const token = localStorage.getItem("token");
+    if (localStorage.getItem("darkMode") === "true") {
+      this.setState({
+        darkMode: true,
+      });
+    } else {
+      this.setState({
+        darkMode: false,
+      });
+    }
 
     if (user && token) {
       this.setState({
@@ -61,12 +67,13 @@ export default class MyApp extends App {
       this.setState({
         darkMode: false,
       });
+      localStorage.setItem("darkMode", false);
     } else {
       this.setState({
         darkMode: true,
       });
+      localStorage.setItem("darkMode", true);
     }
-    localStorage.setItem("darkMode", this.state.darkMode);
   };
 
   signIn = (phone_number, auth_code) => {
@@ -124,13 +131,14 @@ export default class MyApp extends App {
 
   render() {
     const { Component, pageProps } = this.props;
-    let darkToggle = this.state.darkMode === true ? "lightBody" : "darkBody";
+    let darkToggle = this.state.darkMode == true ? "darkBody" : "lightBody";
     return (
       <UserContext.Provider
         value={{
           user: this.state.user,
           token: this.state.token,
           errors: this.state.errors,
+          darkMode: this.state.darkMode,
           signIn: this.signIn,
           signOut: this.signOut,
           toggleDarkMode: this.toggleDarkMode,
@@ -157,27 +165,11 @@ export default class MyApp extends App {
         <Head>
           <script src="/static/js/nprogress.js"></script>
           <link rel="preload" as="style" href="/static/nprogress.css" />
+          <link as="style" href="/static/index.module.css" key="5" />
+          <link as="style" href="/static/LoginForm.module.css" key="4" />
+          <link as="style" href="/static/results.module.css" key="3" />
+          <link as="style" href="/static/globals.css" key="2" />
           <link
-            rel="preload"
-            as="style"
-            href="/static/index.module.css"
-            key="5"
-          />
-          <link
-            rel="preload"
-            as="style"
-            href="/static/LoginForm.module.css"
-            key="4"
-          />
-          <link
-            rel="preload"
-            as="style"
-            href="/static/results.module.css"
-            key="3"
-          />
-          <link rel="preload" as="style" href="/static/globals.css" key="2" />
-          <link
-            rel="preload"
             as="style"
             href="/static/layout/textie_icon.module.css"
             key="1"

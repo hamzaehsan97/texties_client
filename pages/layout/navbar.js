@@ -8,9 +8,10 @@ import { Grid } from "@material-ui/core";
 import SignOutButton from "./signout_button";
 import styles from "../../public/static/layout/navbar.module.css";
 import Switch from "@material-ui/core/Switch";
-
+import { FormGroup } from "@material-ui/core";
+import { FormControlLabel } from "@material-ui/core";
 export default function NavBar() {
-  const { user, toggleDarkMode } = useContext(UserContext);
+  const { user, toggleDarkMode, darkMode } = useContext(UserContext);
   const [isUser, setIsUser] = useState(false);
   useEffect(() => {
     if (user !== null) {
@@ -48,7 +49,26 @@ export default function NavBar() {
                 direction: "row",
               }}
             >
-              <Switch defaultChecked onChange={toggleDarkMode} />
+              <Typography
+                variant={"h6"}
+                style={{ padding: 10 + "px", paddingRight: 12 + "px" }}
+              >
+                🌞
+              </Typography>{" "}
+              <FormGroup>
+                <FormControlLabel
+                  variant="h6"
+                  style={{ paddingTop: 5 + "px" }}
+                  control={
+                    <Switch
+                      onChange={toggleDarkMode}
+                      checked={darkMode}
+                      color="default"
+                    />
+                  }
+                  label="🌑"
+                />
+              </FormGroup>
               {isUser ? (
                 <div className={styles.signout_button}>
                   <SignOutButton />

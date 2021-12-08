@@ -9,6 +9,9 @@
   width: 100%; /* whatever width you like */
   position: relative;
 }
+.data_table {
+  padding: 1vh;
+}
 .avatar {
   margin: 1vh;
   background-color: transparent;
@@ -38,7 +41,6 @@
     padding-left: 1vh;
   }
   .data_table {
-    padding-right: 1vh;
-    padding-left: 1vh;
+    padding: 1vh;
   }
 }
