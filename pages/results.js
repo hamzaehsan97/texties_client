@@ -65,7 +65,6 @@ export default function Home() {
   };
 
   const handleSearchChange = (e) => {
-    // setLoading(true);
     setSeachText(e);
     axios
       .get(
