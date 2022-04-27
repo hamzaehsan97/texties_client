@@ -15,6 +15,8 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
+import { useContext } from "react";
+import UserContext from "../components/UserContext";
 
 export default function Graph(props) {
   const Scale_arr = [
@@ -111,11 +113,13 @@ export default function Graph(props) {
   const [yScale, setYScale] = useState("auto");
   const [xScale, setXScale] = useState("auto");
   const [lineType, setLineType] = useState("basis");
+  const { user } = useContext(UserContext);
+
   useEffect(() => {
     axios
       .get(
         "https://texties-test.herokuapp.com/get?type=weight&phone_number=" +
-          props.user
+          user
       )
       .then((res) => {
         setLoading(false);

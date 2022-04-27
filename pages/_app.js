@@ -57,6 +57,9 @@ export default class MyApp extends App {
         user,
         token,
       });
+      if (Router.pathname === "/" || Router.pathname === "/login") {
+        Router.push("/results");
+      }
     } else if (!user && !token && Router.pathname !== "/") {
       Router.push("/login");
     }
