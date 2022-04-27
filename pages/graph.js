@@ -98,7 +98,6 @@ export default function Graph(props) {
     },
   ];
   const handleChange = (e) => {
-    console.log("handleChange", e.target.value);
     setYScale(e.target.value);
   };
   const returnDate = (date) => {
@@ -124,7 +123,6 @@ export default function Graph(props) {
           obj.created_date = returnDate(obj.created_date);
         }
         setNotes(res.data);
-        console.log(notes);
       })
       .catch((err) => {
         console.log(err);
