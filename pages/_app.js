@@ -39,6 +39,7 @@ export default class MyApp extends App {
     errors: null,
     darkMode: false,
   };
+
   componentDidMount = () => {
     const user = localStorage.getItem("user");
     const token = localStorage.getItem("token");
@@ -51,13 +52,13 @@ export default class MyApp extends App {
         darkMode: false,
       });
     }
-
     if (user && token) {
       this.setState({
         user,
         token,
       });
-      Router.push("/results");
+    } else if (!user && !token && Router.pathname !== "/") {
+      Router.push("/login");
     }
   };
 

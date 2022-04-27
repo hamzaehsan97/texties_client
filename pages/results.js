@@ -23,6 +23,9 @@ import TextieContent from "./layout/textie_content";
 import AddTextie from "./layout/add_textie";
 import Router from "next/router";
 import styles from "../public/static/results.module.css";
+import Graph from "./graph";
+import { IconButton } from "@material-ui/core";
+import TimelineIcon from "@material-ui/icons/Timeline";
 
 const returnDate = (date) => {
   var dateObj = new Date(date);
@@ -37,6 +40,7 @@ export default function Home() {
   const [type, setType] = useState("note");
   const [loading, setLoading] = useState(true);
   const [searchText, setSeachText] = useState("");
+  const [showGraph, setShowGraph] = useState(false);
   const columns = [
     { id: "textie", label: type },
     { id: "date", label: "Date", minWidth: 105 },
@@ -101,7 +105,6 @@ export default function Home() {
       });
   }, []);
   return (
-    // <Container component="main" maxWidth="xs">
     <Grid
       container
       direction="row"
@@ -151,71 +154,87 @@ export default function Home() {
                 </Grid>
 
                 <Grid item style={{ marginLeft: "-10px" }}>
-                  <AddTextie />
+                  <Grid container direction="row" justify="flex-end">
+                    <Grid item>
+                      <IconButton>
+                        <TimelineIcon
+                          fontSize="large"
+                          color="secondary"
+                          onClick={() => setShowGraph(!showGraph)}
+                        />
+                      </IconButton>
+                    </Grid>
+                    <Grid item>
+                      <AddTextie />
+                    </Grid>
+                  </Grid>
                 </Grid>
               </Grid>
             </form>
-
-            <Paper className={styles.data_table}>
-              <Grid
-                container
-                direction="row"
-                justify="flex-start"
-                alignItems="center"
-              >
-                <Grid item xs={12}>
-                  <TextField
-                    fullWidth
-                    id="outlined-basic"
-                    label="Search Texties"
-                    variant="outlined"
-                    value={searchText}
-                    onChange={(e) => handleSearchChange(e.target.value)}
-                    style={{ paddingTop: "5px", paddingBottom: "10px" }}
-                  />
+            {showGraph ? (
+              <Graph user={user} />
+            ) : (
+              <Paper className={styles.data_table}>
+                <Grid
+                  container
+                  direction="row"
+                  justify="flex-start"
+                  alignItems="center"
+                >
+                  <Grid item xs={12}>
+                    <TextField
+                      fullWidth
+                      id="outlined-basic"
+                      label="Search Texties"
+                      variant="outlined"
+                      value={searchText}
+                      onChange={(e) => handleSearchChange(e.target.value)}
+                      style={{ paddingTop: "5px", paddingBottom: "10px" }}
+                    />
+                  </Grid>
                 </Grid>
-              </Grid>
-              {loading ? (
-                <div>
-                  <CircularProgress color="secondary" />
-                </div>
-              ) : (
-                <div>
-                  <TableContainer>
-                    <Table stickyHeader>
-                      <TableHead>
-                        <TableRow>
-                          {columns.map((column) => (
-                            <TableCell
-                              key={column.id}
-                              align={column.align}
-                              style={{
-                                minWidth: column.minWidth,
-                                fontWeight: "bold",
-                              }}
-                            >
-                              {column.label}
-                            </TableCell>
-                          ))}
-                        </TableRow>
-                      </TableHead>
-                      <TableBody>
-                        {notes
-                          .slice(0)
-                          .reverse()
-                          .map((note) => (
-                            <TextieContent
-                              textie={note.textie}
-                              date={returnDate(note.created_date)}
-                              id={note.id}
-                            />
-                          ))}
-                      </TableBody>
-                    </Table>
-                  </TableContainer>
-                </div>
-              )}
-            </Paper>
+                {loading ? (
+                  <div>
+                    <CircularProgress color="secondary" />
+                  </div>
+                ) : (
+                  <div>
+                    <TableContainer>
+                      <Table stickyHeader>
+                        <TableHead>
+                          <TableRow>
+                            {columns.map((column) => (
+                              <TableCell
+                                key={column.id}
+                                align={column.align}
+                                style={{
+                                  minWidth: column.minWidth,
+                                  fontWeight: "bold",
+                                }}
+                              >
+                                {column.label}
+                              </TableCell>
+                            ))}
+                          </TableRow>
+                        </TableHead>
+                        <TableBody>
+                          {notes
+                            .slice(0)
+                            .reverse()
+                            .map((note) => (
+                              <TextieContent
+                                textie={note.textie}
+                                date={returnDate(note.created_date)}
+                                id={note.id}
+                              />
+                            ))}
+                        </TableBody>
+                      </Table>
+                    </TableContainer>
+                  </div>
+                )}
+              </Paper>
+            )}
           </div>{" "}
           <Grid item>
             <SignOutButton />
