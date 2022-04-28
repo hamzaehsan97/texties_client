@@ -17,7 +17,8 @@ import {
 } from "recharts";
 import { useContext } from "react";
 import UserContext from "../components/UserContext";
-
+import CircularProgress from "@material-ui/core/CircularProgress";
+// import styles from "../public/static/globals.css";
 export default function Graph(props) {
   const Scale_arr = [
     {
@@ -141,29 +142,31 @@ export default function Graph(props) {
       style={{ minHeight: 40 + "vh" }}
     >
       {loading ? (
-        <div>Loading...</div>
+        <CircularProgress />
       ) : (
         <Grid
           container
-          direction="column"
+          direction="row"
           alignItems="center"
           justify="center"
           style={{
             minWidth: 100 + "vw",
             minHeight: 50 + "vh",
           }}
+          className="pt-30"
         >
-          <Grid item xs={12} md={12}>
+          <Grid item xs={12} md={1} />
+          <Grid item xs={12} md={2}>
             <div
               style={{
                 display: "flex",
-                direction: "row",
-                width: "50vw",
+                flexDirection: "column",
                 justifyContent: "space-between",
+                alignItems: "center",
               }}
+              className="flex-row"
             >
-              <div>
-                {" "}
+              <div className="pt-20">
                 <InputLabel id="y-axis-label">Y-axis scale</InputLabel>
                 <Select
                   labelId="y-axis-label"
@@ -176,7 +179,7 @@ export default function Graph(props) {
                   ))}
                 </Select>
               </div>
-              <div>
+              <div className="pt-20">
                 <InputLabel id="y-axis-label">X-axis scale</InputLabel>
                 <Select
                   labelId="x-axis-label"
@@ -189,8 +192,7 @@ export default function Graph(props) {
                   ))}
                 </Select>
               </div>
-              <div>
-                {" "}
+              <div className="pt-20 pr-20">
                 <InputLabel id="line-label">Line Type</InputLabel>
                 <Select
                   labelId="line-label"
@@ -205,7 +207,7 @@ export default function Graph(props) {
               </div>
             </div>
           </Grid>
-          <Grid item xs={12} md={12}>
+          <Grid item xs={12} md={6}>
             <ResponsiveContainer
               minWidth={500}
               minHeight={300}
@@ -246,6 +248,7 @@ export default function Graph(props) {
               </LineChart>
             </ResponsiveContainer>
           </Grid>
+          <Grid item xs={12} md={3} />
         </Grid>
       )}
     </Grid>

@@ -189,7 +189,7 @@ export default class MyApp extends App {
             content="Making notes harder, because why not?"
           />
         </Head>
-        <div className={darkToggle}>
+        <div className={darkToggle} style={{ minWidth: "fit-content" }}>
           <NavBar />
           <Component {...pageProps} />
           <Box mt={8}>
