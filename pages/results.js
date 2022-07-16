@@ -133,6 +133,7 @@ export default function Home() {
                 </MenuItem>
                 <MenuItem value={"note"}>Notes</MenuItem>
                 <MenuItem value={"idea"}>Ideas</MenuItem>
+                <MenuItem value={"url"}>Links</MenuItem>
                 <MenuItem value={"weight"}>Weight</MenuItem>
               </Select>
               <Grid
